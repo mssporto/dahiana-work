@@ -30,7 +30,7 @@ const activeProject = projects[0];
           <a
             class="card"
             class:list={{ 'is-active': i === 0 }}
-            style={`--diff: ${i}`}
+            style={`--diff: ${Math.max(-3, Math.min(3, i))}`}
             data-index={i}
             data-pattern={i % 2}
             data-org={project.org}
@@ -84,7 +84,8 @@ const activeProject = projects[0];
     function render() {
       cards.forEach((card, i) => {
         const diff = i - activeIndex;
-        card.style.setProperty('--diff', String(diff));
+        const clampedDiff = Math.max(-3, Math.min(3, diff));
+        card.style.setProperty('--diff', String(clampedDiff));
         card.style.zIndex = String(cards.length - Math.abs(diff));
         card.classList.toggle('is-active', i === activeIndex);
       });
@@ -131,13 +132,15 @@ const activeProject = projects[0];
         setActive(activeIndex + 1);
       }
     });
+
+    render();
   }
 </script>
 
 <style>
   .work {
     padding: 0 var(--space-3) var(--space-8);
-    max-width: 42rem;
+    max-width: 64rem;
     margin: 0 auto;
     scroll-margin-top: 5rem;
   }
@@ -152,8 +155,9 @@ const activeProject = projects[0];
   }
 
   .carousel {
-    --card-size: clamp(4.5rem, 8vw + 2rem, 6.5rem);
-    --fan-offset: calc(var(--card-size) * 0.55);
+    --card-width: clamp(11rem, 55vw, 31.25rem);
+    --card-height: clamp(8.8rem, 44vw, 25rem);
+    --fan-offset: calc(var(--card-width) * 0.38);
     --fan-rotate: 6deg;
     --card-scale: 0.85;
     display: flex;
@@ -176,16 +180,18 @@ const activeProject = projects[0];
   .stack {
     position: relative;
     width: 100%;
-    height: calc(var(--card-size) + var(--space-4));
+    height: calc(var(--card-height) + var(--space-4));
+    overflow-x: hidden;
+    overflow-y: visible;
   }
 
   .card {
     position: absolute;
     left: 50%;
     top: var(--space-2);
-    width: var(--card-size);
-    height: var(--card-size);
-    margin-left: calc(var(--card-size) / -2);
+    width: var(--card-width);
+    height: var(--card-height);
+    margin-left: calc(var(--card-width) / -2);
     display: block;
     color: inherit;
     text-decoration: none;
@@ -216,17 +222,17 @@ const activeProject = projects[0];
     color: var(--color-surface-base);
     font-family: var(--font-mono);
     font-weight: 700;
-    font-size: 1.25rem;
+    font-size: clamp(2rem, 5vw + 1rem, 4.5rem);
     letter-spacing: var(--tracking-tight);
   }
 
   .card[data-pattern='0'] .card-face {
-    background-image: repeating-linear-gradient(45deg, var(--pattern-color) 0 1px, transparent 1px 8px);
+    background-image: repeating-linear-gradient(45deg, var(--pattern-color) 0 2px, transparent 2px 16px);
   }
 
   .card[data-pattern='1'] .card-face {
-    background-image: radial-gradient(var(--pattern-color) 1px, transparent 1px);
-    background-size: 8px 8px;
+    background-image: radial-gradient(var(--pattern-color) 2px, transparent 2px);
+    background-size: 16px 16px;
   }
 
   .card.is-active .card-face {
