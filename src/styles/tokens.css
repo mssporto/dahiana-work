@@ -1,0 +1,45 @@
+/* Source of truth for design.md — keep both in sync. */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/archivo-variable.woff2') format('woff2-variations'),
+    url('/fonts/archivo-variable.woff2') format('woff2');
+}
+
+:root {
+  /* Color */
+  --color-surface-base: #f1efea;
+  --color-surface-footer: #0a0a08;
+  --color-text-primary: #131410;
+  --color-text-muted: #4b4b47;
+  --color-text-on-footer: #ffffff;
+  --color-text-accent: #f63d18;
+
+  /* Typography */
+  --font-body: 'Archivo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-display: var(--font-body);
+  --font-mono: 'Archivo', ui-monospace, monospace;
+  --tracking-tight: -0.03em;
+  --leading-body: 1.7;
+  --font-weight-heading: 700;
+  --font-weight-body: 400;
+
+  --font-size-hero: clamp(2.5rem, 6vw + 1rem, 5.5rem);
+  --font-size-heading: clamp(1.5rem, 2vw + 1rem, 2.25rem);
+  --font-size-body: 1rem;
+  --font-size-meta: 0.875rem;
+
+  /* Spacing (8pt grid) */
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-6: 3rem;
+  --space-8: 4rem;
+  --space-12: 6rem;
+
+  /* Grid (hairline texture) */
+  --grid-line-color: #e6e3dc;
+}

@@ -1,0 +1,38 @@
+---
+interface Props {
+  about: string[];
+}
+const { about } = Astro.props;
+---
+
+<section class="about" id="about" aria-labelledby="about-heading">
+  <h2 id="about-heading" class="visually-hidden">About</h2>
+  {about.map((paragraph) => <p class="about-copy">{paragraph}</p>)}
+</section>
+
+<style>
+  .about {
+    padding: 0 var(--space-3) var(--space-8);
+    max-width: 42rem;
+    margin: 0 auto;
+    scroll-margin-top: 5rem;
+  }
+
+  .about-copy {
+    font-size: clamp(1.125rem, 1vw + 1rem, 1.375rem);
+    font-weight: 400;
+    line-height: var(--leading-body);
+    color: var(--color-text-muted);
+    max-width: 38rem;
+    margin: 0 0 var(--space-3);
+  }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+</style>

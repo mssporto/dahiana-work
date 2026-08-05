@@ -1,0 +1,90 @@
+---
+import '../styles/tokens.css';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
+interface Props {
+  title: string;
+  description: string;
+  lang: 'en' | 'es';
+}
+
+const { title, description, lang } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const altLang = lang === 'en' ? 'es' : 'en';
+const altPath = getRelativeLocaleUrl(altLang, '', { normalizeLocale: false });
+
+const personJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Dahiana Porto',
+  url: 'https://dahiana.work',
+  email: 'mailto:hello@dahiana.work',
+  jobTitle: 'Low-code & AI builder',
+  sameAs: [],
+};
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="alternate" hreflang={lang} href={canonicalURL} />
+    <link rel="alternate" hreflang={altLang} href={new URL(altPath, Astro.site)} />
+    <link rel="alternate" hreflang="x-default" href={new URL('/', Astro.site)} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(personJsonLd)} is:inline />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <slot name="nav" />
+    <main id="main">
+      <slot />
+    </main>
+    <slot name="footer" />
+  </body>
+</html>
+
+<style>
+  :global(html) {
+    background: var(--color-surface-base);
+    background-image: linear-gradient(var(--grid-line-color) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line-color) 1px, transparent 1px);
+    background-size: 4rem 4rem;
+    color: var(--color-text-primary);
+    font-family: var(--font-body);
+    line-height: var(--leading-body);
+  }
+
+  :global(body) {
+    margin: 0;
+  }
+
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    background: var(--color-text-accent);
+    color: var(--color-text-primary);
+    padding: var(--space-1) var(--space-2);
+    z-index: 20;
+  }
+
+  .skip-link:focus {
+    left: var(--space-2);
+    top: var(--space-2);
+  }
+</style>

@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Hero from '../../components/Hero.astro';
+import About from '../../components/About.astro';
+import Work from '../../components/Work.astro';
+import Services from '../../components/Services.astro';
+import Footer from '../../components/Footer.astro';
+import { es } from '../../data/content';
+---
+
+<BaseLayout title={es.title} description={es.description} lang="es">
+  <Nav slot="nav" nav={es.nav} statusLine={es.statusLine} langHref="/" langLabel={es.langSwitchLabel} />
+  <Hero greeting={es.greeting} />
+  <About about={es.about} />
+  <Work heading={es.projectsHeading} projects={es.projects} />
+  <Services servicesHeading={es.servicesHeading} services={es.services} />
+  <Footer slot="footer" ctaText={es.ctaText} ctaEmail={es.ctaEmail} />
+</BaseLayout>

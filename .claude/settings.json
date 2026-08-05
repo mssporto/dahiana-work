@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s \"https://api.github.com/repos/microsoft/fluentui-emoji/contents/assets/Waving%20hand/3D\")",
+      "Bash(curl -s \"https://api.github.com/search/code?q=waving+hand+repo:microsoft/fluentui-emoji\")",
+      "Bash(curl -sL \"https://api.github.com/repos/microsoft/fluentui-emoji/git/trees/main?recursive=1\")",
+      "Bash(python3 -c ' *)",
+      "Bash(curl -sL \"https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/LICENSE\")",
+      "Bash(curl -sL -o public/images/waving-hand-3d.png \"https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Waving%20hand/Default/3D/waving_hand_3d_default.png\")",
+      "Bash(gh auth *)",
+      "Bash(grep -rInE '\\(api[_-]?key|secret|passwd|password|bearer |BEGIN [A-Z ]*PRIVATE KEY|sk-[A-Za-z0-9]{16,}|xox[baprs]-|AKIA[0-9A-Z]{16}|ghp_[A-Za-z0-9]{20,}\\)' --exclude-dir=node_modules --exclude-dir=dist --exclude-dir=.astro --exclude-dir=.git .)",
+      "Bash(grep -rInoE '[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\\\.[A-Za-z]{2,}' --exclude-dir=node_modules --exclude-dir=dist --exclude-dir=.astro --exclude-dir=.git .)",
+      "Bash(git init *)",
+      "Bash(git branch *)"
+    ]
+  }
+}

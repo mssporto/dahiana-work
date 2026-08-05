@@ -1,0 +1,113 @@
+---
+import type { Project } from '../data/content';
+
+interface Props {
+  heading: string;
+  projects: Project[];
+}
+const { heading, projects } = Astro.props;
+---
+
+<section class="work" id="work" aria-labelledby="work-heading">
+  <h2 id="work-heading" class="section-heading">{heading}</h2>
+  <ul class="rows">
+    {
+      projects.map((project) => (
+        <li class="row">
+          <a class="row-link" href={project.url} target="_blank" rel="noopener noreferrer nofollow">
+            <span class="row-org">{project.org}</span>
+            <span class="row-description">{project.description}</span>
+            <span class="row-arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+<style>
+  .work {
+    padding: 0 var(--space-3) var(--space-8);
+    max-width: 42rem;
+    margin: 0 auto;
+    scroll-margin-top: 5rem;
+  }
+
+  .section-heading {
+    font-family: var(--font-display);
+    font-size: var(--font-size-heading);
+    font-weight: var(--font-weight-heading);
+    letter-spacing: var(--tracking-tight);
+    color: var(--color-text-primary);
+    margin: 0 0 var(--space-4);
+  }
+
+  .rows {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--grid-line-color);
+  }
+
+  .row {
+    border-bottom: 1px solid var(--grid-line-color);
+  }
+
+  .row-link {
+    display: grid;
+    grid-template-columns: 8rem 1fr auto;
+    align-items: baseline;
+    gap: var(--space-3);
+    padding: var(--space-3) 0;
+    color: inherit;
+    text-decoration: none;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+  }
+
+  .row-link:hover {
+    transform: translateX(0.25rem);
+  }
+
+  .row-link:hover .row-arrow {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .row-link:focus-visible {
+    outline: 2px solid var(--color-text-accent);
+    outline-offset: 2px;
+  }
+
+  .row-link:active {
+    opacity: 0.8;
+  }
+
+  .row-org {
+    font-weight: 700;
+    color: var(--color-text-primary);
+  }
+
+  .row-description {
+    font-size: var(--font-size-body);
+    color: var(--color-text-muted);
+    line-height: var(--leading-body);
+  }
+
+  .row-arrow {
+    color: var(--color-text-accent);
+    font-weight: 700;
+    opacity: 0;
+    transform: translateX(-0.25rem);
+    transition: transform 0.15s ease, opacity 0.15s ease;
+  }
+
+  @media (max-width: 640px) {
+    .row-link {
+      grid-template-columns: 1fr auto;
+    }
+
+    .row-description {
+      grid-column: 1 / -1;
+    }
+  }
+</style>
