@@ -81,6 +81,7 @@ A visible but restrained hairline grid: thin, low-contrast lines barely darker t
 - Respect `prefers-reduced-motion: reduce`.
 - Minimal/functional only: hover/focus states use `translateY` and opacity shifts, same as before. The two exceptions are the glossy 3D hand's idle animation (successor to the old wave-emoji keyframe) and the footer's 3D envelope idle animation — those are the only continuously-animated elements beyond standard hover/focus.
 - **One additional exception**: a one-time, per-block scroll-reveal — each section's heading/paragraph/list-item blocks fade and rise (`opacity` 0→1, `translateY(12px)`→`0`) as the section enters the viewport, staggered ~70ms per sibling. Fires once per element and never re-hides on scroll-up. No parallax, no cursor-follow, and no *repeating* or *looping* scroll effects — those remain banned.
+- **One more exception**: interactive components (currently just the Work carousel) may combine `transform` sub-properties (rotate + scale + translate together) with `opacity` in direct response to hover, click, or keyboard input. Still `transform`/`opacity` only, still never `transition-all`. `prefers-reduced-motion` collapses the response to instant, non-animated state changes. This is scoped to interaction-driven response only — not a license for new idle or scroll-triggered motion.
 
 ## Depth
 
