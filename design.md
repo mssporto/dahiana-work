@@ -4,7 +4,7 @@ Living design-system reference. This file and `src/styles/tokens.css` must alway
 
 ## Direction
 
-Minimal, text-first, cream. Restraint comes from **one font, one accent color** — not from confining expressiveness to a single spot. Hierarchy is built from scale/weight/opacity contrast on the single typeface, used throughout every section (Hero, About, Work, Services, footer). The one deliberate "flashy" object in the system is a glossy, dimensionally-rendered 3D waving hand in the hero (successor to the old wave-emoji treatment) — idle-animated only, no scroll triggers.
+Minimal, text-first, cream. Restraint comes from **one font, one accent color** — not from confining expressiveness to a single spot. Hierarchy is built from scale/weight/opacity contrast on the single typeface, used throughout every section (Hero, About, Work, Services, footer). There are two deliberate "flashy" objects in the system: a glossy, dimensionally-rendered 3D waving hand in the hero (successor to the old wave-emoji treatment) and a matching 3D envelope in the footer contact CTA — both idle-animated only, no scroll triggers.
 
 ## Color
 
@@ -66,7 +66,7 @@ A visible but restrained hairline grid: thin, low-contrast lines barely darker t
 
 - Default button language: sharp-cornered rectangle (no border-radius, or max 2–4px), mono-spaced label text, thin border. Orange fill (`color-text-accent`) reserved for primary/hover state, with near-black text on top when filled.
 - Persistent nav bar, sharp/mono button style for its links. Nav links are anchor-scrolls to sections (About, Work, Services, Contact), not separate routes.
-- **Exception — the footer contact CTA**: the one sticker/peeling-corner badge in the whole system. No other scattered sticker/collage ephemera anywhere. Don't apply the sharp/mono button treatment to this one element, and don't apply the sticker treatment anywhere else.
+- The footer contact CTA uses the standard interactive-element treatment (underline, hover/focus/active states), same as links elsewhere — no sticker/collage treatment anywhere in the system.
 
 ## Mono live-data readout
 
@@ -79,7 +79,7 @@ A visible but restrained hairline grid: thin, low-contrast lines barely darker t
 
 - Animate only `transform` and `opacity`. Never `transition-all`.
 - Respect `prefers-reduced-motion: reduce`.
-- Minimal/functional only: hover/focus states use `translateY` and opacity shifts, same as before. The one exception is the glossy 3D hand's idle animation (successor to the old wave-emoji keyframe) — that is the only animated element beyond standard hover/focus. No scroll-triggered reveals, no parallax, no cursor-follow effects.
+- Minimal/functional only: hover/focus states use `translateY` and opacity shifts, same as before. The two exceptions are the glossy 3D hand's idle animation (successor to the old wave-emoji keyframe) and the footer's 3D envelope idle animation — those are the only animated elements beyond standard hover/focus. No scroll-triggered reveals, no parallax, no cursor-follow effects.
 
 ## Depth
 
