@@ -79,7 +79,8 @@ A visible but restrained hairline grid: thin, low-contrast lines barely darker t
 
 - Animate only `transform` and `opacity`. Never `transition-all`.
 - Respect `prefers-reduced-motion: reduce`.
-- Minimal/functional only: hover/focus states use `translateY` and opacity shifts, same as before. The two exceptions are the glossy 3D hand's idle animation (successor to the old wave-emoji keyframe) and the footer's 3D envelope idle animation — those are the only animated elements beyond standard hover/focus. No scroll-triggered reveals, no parallax, no cursor-follow effects.
+- Minimal/functional only: hover/focus states use `translateY` and opacity shifts, same as before. The two exceptions are the glossy 3D hand's idle animation (successor to the old wave-emoji keyframe) and the footer's 3D envelope idle animation — those are the only continuously-animated elements beyond standard hover/focus.
+- **One additional exception**: a one-time, per-block scroll-reveal — each section's heading/paragraph/list-item blocks fade and rise (`opacity` 0→1, `translateY(12px)`→`0`) as the section enters the viewport, staggered ~70ms per sibling. Fires once per element and never re-hides on scroll-up. No parallax, no cursor-follow, and no *repeating* or *looping* scroll effects — those remain banned.
 
 ## Depth
 

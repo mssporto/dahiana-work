@@ -6,11 +6,11 @@ interface Props {
 const { ctaText, ctaEmail } = Astro.props;
 ---
 
-<footer class="footer" id="contact" aria-labelledby="contact-heading">
+<footer class="footer" id="contact" aria-labelledby="contact-heading" data-reveal>
   <div class="footer-inner">
     <h2 id="contact-heading" class="visually-hidden">Contact</h2>
-    <p class="cta-text">{ctaText}</p>
-    <a class="email-cta" href={`mailto:${ctaEmail}`}>
+    <p class="cta-text reveal-item">{ctaText}</p>
+    <a class="email-cta reveal-item" href={`mailto:${ctaEmail}`}>
       <span class="envelope" aria-hidden="true">
         <img src="/images/envelope-3d.png" alt="" width="256" height="256" loading="lazy" />
       </span>

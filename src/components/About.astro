@@ -1,13 +1,36 @@
 ---
+import type { AboutParagraph } from '../data/content';
+
 interface Props {
-  about: string[];
+  about: AboutParagraph[];
 }
 const { about } = Astro.props;
+
+function splitOnHighlight({ text, highlight }: AboutParagraph) {
+  const index = text.indexOf(highlight);
+  if (index === -1) return { before: text, highlight: '', after: '' };
+  return {
+    before: text.slice(0, index),
+    highlight,
+    after: text.slice(index + highlight.length),
+  };
+}
 ---
 
-<section class="about" id="about" aria-labelledby="about-heading">
+<section class="about" id="about" aria-labelledby="about-heading" data-reveal>
   <h2 id="about-heading" class="visually-hidden">About</h2>
-  {about.map((paragraph) => <p class="about-copy">{paragraph}</p>)}
+  {
+    about.map((paragraph) => {
+      const { before, highlight, after } = splitOnHighlight(paragraph);
+      return (
+        <p class="about-copy reveal-item">
+          {before}
+          {highlight && <span class="accent-highlight">{highlight}</span>}
+          {after}
+        </p>
+      );
+    })
+  }
 </section>
 
 <style>
@@ -25,6 +48,11 @@ const { about } = Astro.props;
     color: var(--color-text-muted);
     max-width: 38rem;
     margin: 0 0 var(--space-3);
+  }
+
+  .accent-highlight {
+    color: var(--color-text-accent);
+    font-weight: 700;
   }
 
   .visually-hidden {

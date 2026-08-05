@@ -8,12 +8,12 @@ interface Props {
 const { heading, projects } = Astro.props;
 ---
 
-<section class="work" id="work" aria-labelledby="work-heading">
-  <h2 id="work-heading" class="section-heading">{heading}</h2>
+<section class="work" id="work" aria-labelledby="work-heading" data-reveal>
+  <h2 id="work-heading" class="section-heading reveal-item">{heading}</h2>
   <ul class="rows">
     {
       projects.map((project) => (
-        <li class="row">
+        <li class="row reveal-item">
           <a class="row-link" href={project.url} target="_blank" rel="noopener noreferrer nofollow">
             <span class="row-org">{project.org}</span>
             <span class="row-description">{project.description}</span>

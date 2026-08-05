@@ -4,6 +4,16 @@ export interface Project {
   description: string;
 }
 
+export interface AboutParagraph {
+  text: string;
+  highlight: string;
+}
+
+export interface Service {
+  text: string;
+  tags: string[];
+}
+
 export interface NavLabels {
   about: string;
   work: string;
@@ -17,11 +27,11 @@ export interface PageContent {
   description: string;
   greeting: string;
   nav: NavLabels;
-  about: string[];
+  about: AboutParagraph[];
   projectsHeading: string;
   projects: Project[];
   servicesHeading: string;
-  services: string[];
+  services: Service[];
   ctaText: string;
   ctaEmail: string;
   statusLine: string;
@@ -41,8 +51,14 @@ export const en: PageContent = {
     contact: 'Contact',
   },
   about: [
-    "I'm a low-code and AI builder. I started out in marketing and grew into a CMO role, where I explored every facet of the field. Over time, I realized I didn't just want to promote products. I wanted to build them.",
-    "So for the past four years, I've been developing products using low-code tools, while also diving into design and doing some teaching along the way.",
+    {
+      text: "I'm a low-code and AI builder. I started out in marketing and grew into a CMO role, where I explored every facet of the field. Over time, I realized I didn't just want to promote products. I wanted to build them.",
+      highlight: "I'm a low-code and AI builder.",
+    },
+    {
+      text: "So for the past four years, I've been developing products using Low-Code, AI and Automation, while also diving into design and doing some teaching along the way.",
+      highlight: 'Low-Code, AI and Automation',
+    },
   ],
   projectsHeading: 'Some of the projects I’ve worked on',
   projects: [
@@ -82,10 +98,19 @@ export const en: PageContent = {
   ],
   servicesHeading: 'What I can help with',
   services: [
-    'Building apps and MVPs with Bubble.',
-    'Creating websites and landing pages with Webflow, WordPress, or Framer.',
-    'Building automations from scratch with n8n.',
-    'SEO, AEO, automations, content marketing, and more.',
+    { text: 'Building apps and MVPs with Bubble.', tags: ['MVP'] },
+    {
+      text: 'Creating websites and landing pages with Webflow, WordPress, or Framer.',
+      tags: ['WEBFLOW DEVELOPMENT', 'WORDPRESS DEVELOPMENT', 'DESIGN & LAYOUT'],
+    },
+    {
+      text: 'Building automations from scratch with n8n.',
+      tags: ['WORKFLOW AUTOMATION', 'AI AUTOMATION'],
+    },
+    {
+      text: 'SEO, AEO, automations, content marketing, and more.',
+      tags: ['SEO STRATEGY', 'AEO', 'CONTENT MARKETING'],
+    },
   ],
   ctaText: "Whether you're starting something new or improving what you have, let's chat.",
   ctaEmail: 'hello@dahiana.work',
@@ -106,8 +131,14 @@ export const es: PageContent = {
     contact: 'Contacto',
   },
   about: [
-    'Soy constructora low-code y de IA. Empecé en marketing y crecí hasta un rol de CMO, donde exploré cada faceta del área. Con el tiempo, me di cuenta de que no solo quería promocionar productos: quería construirlos.',
-    'Así que durante los últimos cuatro años he estado desarrollando productos con herramientas low-code, mientras profundizaba en diseño y enseñaba en el camino.',
+    {
+      text: 'Soy constructora low-code y de IA. Empecé en marketing y crecí hasta un rol de CMO, donde exploré cada faceta del área. Con el tiempo, me di cuenta de que no solo quería promocionar productos: quería construirlos.',
+      highlight: 'Soy constructora low-code y de IA.',
+    },
+    {
+      text: 'Así que durante los últimos cuatro años he estado desarrollando productos con Low-Code, IA y Automatización, mientras profundizaba en diseño y enseñaba en el camino.',
+      highlight: 'Low-Code, IA y Automatización',
+    },
   ],
   projectsHeading: 'Algunos de los proyectos en los que he trabajado',
   projects: [
@@ -147,10 +178,19 @@ export const es: PageContent = {
   ],
   servicesHeading: 'En qué puedo ayudarte',
   services: [
-    'Construir apps y MVPs con Bubble.',
-    'Crear sitios web y landing pages con Webflow, WordPress o Framer.',
-    'Construir automatizaciones desde cero con n8n.',
-    'SEO, AEO, automatizaciones, marketing de contenido y más.',
+    { text: 'Construir apps y MVPs con Bubble.', tags: ['MVP'] },
+    {
+      text: 'Crear sitios web y landing pages con Webflow, WordPress o Framer.',
+      tags: ['DESARROLLO WEBFLOW', 'DESARROLLO WORDPRESS', 'DISEÑO Y MAQUETACIÓN'],
+    },
+    {
+      text: 'Construir automatizaciones desde cero con n8n.',
+      tags: ['AUTOMATIZACIÓN DE FLUJOS', 'AUTOMATIZACIÓN CON IA'],
+    },
+    {
+      text: 'SEO, AEO, automatizaciones, marketing de contenido y más.',
+      tags: ['ESTRATEGIA SEO', 'AEO', 'MARKETING DE CONTENIDO'],
+    },
   ],
   ctaText: 'Ya sea que estés empezando algo nuevo o mejorando lo que ya tienes, hablemos.',
   ctaEmail: 'hello@dahiana.work',
