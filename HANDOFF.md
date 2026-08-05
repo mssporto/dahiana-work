@@ -6,7 +6,7 @@ This document exists so a new session can pick up exactly where this one left of
 
 The v2 redesign is **built, audited, and committed** — this is a real project state, not a plan:
 
-- Cream body (`#f1efea`) / dark footer band (`#0a0a08`), single self-hosted Archivo font, sharp/mono nav with a live Madrid time + coordinates readout, text-row Work list (no cards), footer sticker CTA. Full spec in `design.md`.
+- Cream body (`#f1efea`) / dark footer band (`#0a0a08`), single self-hosted Archivo font, sharp/mono nav with a live Madrid time + coordinates readout, text-row Work list (no cards), footer contact CTA (see §1a — no longer a sticker). Full spec in `design.md`.
 - Passed a full `/impeccable audit` pass (17/20 → fixes applied for all P1–P3 findings: landmark nesting, missing Contact heading, motion-budget violations, touch targets, muted-text token, no-JS readout fallback). Re-verified: `astro check`/`astro build` clean, CSP intact, landmarks confirmed via accessibility snapshot.
 - `PRODUCT.md` written (impeccable's strategic doc — register: brand, users, anti-references, design principles).
 - **Repo is live**: `dahiana_work` was isolated into its own git repo (it used to live inside an unrelated parent monorepo — that's fixed now) and pushed to **[github.com/mssporto/dahiana-work](https://github.com/mssporto/dahiana-work)**, private, on branch `main`. One baseline commit (`4b3a319`).
@@ -20,6 +20,16 @@ The hero's waving hand went through three iterations this session:
 3. **Tried and rejected**: a real interactive 3D version — Three.js (pinned `0.185.1`) + a CC-BY rigged hand model (glTF, sourced from poly.pizza, no-login-required CC asset host) + cursor-follow rotation + baked wave animation, tinted to the `#f63d18` accent. Built on branch `experiment/3d-interactive-hand`. **Visual result was rejected outright** ("looks absolutely horrific") — the model's orientation/lighting didn't read as intended even after a corrective rotation fix. Branch deleted, `three`/`@types/three` uninstalled, `Hand3D.astro` and `public/models/` removed, `Hero.astro` reverted to the Fluent Emoji version. `main` is clean of any trace of this attempt.
 
 **Do not re-attempt Option C (real interactive 3D) without a materially different approach** — if revisited, it needs actual visual iteration/screenshots checked *before* presenting it as done, and probably a different model source or a from-scratch procedural build rather than a found rigged asset, since orientation problems from FBX→glTF conversion were the likely root cause.
+
+## 1a. Footer CTA — sticker retired, then an interactive envelope detour (also reverted)
+
+The footer's contact CTA also changed twice in a later session:
+
+1. **Sticker → static 3D envelope**: the original rotated/peeling-corner sticker badge was retired entirely (per `design.md`, no sticker treatment remains anywhere in the system). Replaced with the Fluent Emoji 3D "Envelope" (`public/images/envelope-3d.png`), idle-animated like the hero hand — `design.md`'s "one flashy object" language was generalized to "two."
+2. **Tried and rejected**: an interactive hover-to-open version — envelope crossfaded to a second "Incoming envelope" 3D asset on hover/tap, revealing the email address plus a separate copy-to-clipboard button (bundled Astro `<script>`, Clipboard API, `aria-live` status). Fully built, verified working (build clean, no console errors, accessible via keyboard/AT), but **rejected on visual grounds** ("that design is horrible") before being committed — so `main` was never touched by it. Reverted by checking out the last committed `Footer.astro`; the extra asset and its design spec doc were deleted.
+3. **Current/live**: back to the static envelope, but resized down (~2.75rem vs ~5rem) and laid out **inline, side by side** with the email text as a single `mailto:` link — the stacked layout had read as visually "off."
+
+**If revisited, the hover/open interaction needs actual visual iteration before being presented as done** — same lesson as the hero hand's Three.js detour: build it, look at it, then decide, don't assume the concept will read well just because it's technically correct.
 
 ## 2. Repo / deploy state
 
