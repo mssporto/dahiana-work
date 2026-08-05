@@ -10,10 +10,12 @@ const { ctaText, ctaEmail } = Astro.props;
   <div class="footer-inner">
     <h2 id="contact-heading" class="visually-hidden">Contact</h2>
     <p class="cta-text">{ctaText}</p>
-    <span class="envelope" aria-hidden="true">
-      <img src="/images/envelope-3d.png" alt="" width="256" height="256" loading="lazy" />
-    </span>
-    <a class="email-link" href={`mailto:${ctaEmail}`}>{ctaEmail}</a>
+    <a class="email-cta" href={`mailto:${ctaEmail}`}>
+      <span class="envelope" aria-hidden="true">
+        <img src="/images/envelope-3d.png" alt="" width="256" height="256" loading="lazy" />
+      </span>
+      <span class="email-link">{ctaEmail}</span>
+    </a>
   </div>
 </footer>
 
@@ -38,10 +40,32 @@ const { ctaText, ctaEmail } = Astro.props;
     margin: 0 0 var(--space-6);
   }
 
+  .email-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    text-decoration: none;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+  }
+
+  .email-cta:hover {
+    transform: translateY(-2px);
+    opacity: 0.8;
+  }
+
+  .email-cta:focus-visible {
+    outline: 2px solid var(--color-text-accent);
+    outline-offset: 3px;
+  }
+
+  .email-cta:active {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
   .envelope {
     display: inline-block;
-    width: clamp(3rem, 5vw + 2rem, 5rem);
-    margin: 0 0 var(--space-3);
+    width: clamp(1.75rem, 2.5vw + 1rem, 2.75rem);
     transform-origin: 50% 60%;
     animation: envelope-idle 3.6s ease-in-out infinite;
     filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.45));
@@ -77,29 +101,12 @@ const { ctaText, ctaEmail } = Astro.props;
   }
 
   .email-link {
-    display: inline-block;
     font-family: var(--font-mono);
     font-size: var(--font-size-body);
     font-weight: 700;
     color: var(--color-text-on-footer);
     text-decoration: underline;
     text-underline-offset: 0.25em;
-    transition: transform 0.15s ease, opacity 0.15s ease;
-  }
-
-  .email-link:hover {
-    transform: translateY(-2px);
-    opacity: 0.8;
-  }
-
-  .email-link:focus-visible {
-    outline: 2px solid var(--color-text-accent);
-    outline-offset: 3px;
-  }
-
-  .email-link:active {
-    transform: translateY(0);
-    opacity: 1;
   }
 
   .visually-hidden {
