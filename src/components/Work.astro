@@ -8,6 +8,10 @@ interface Props {
 const { heading, projects } = Astro.props;
 
 const activeProject = projects[0];
+
+function domainFor(url: string): string {
+  return new URL(url).hostname.replace(/^www\./, '');
+}
 ---
 
 <section class="work" id="work" aria-labelledby="work-heading" data-reveal>
@@ -29,13 +33,20 @@ const activeProject = projects[0];
             rel="noopener noreferrer nofollow"
           >
             <span class="card-face">
-              <img
-                src={project.image}
-                alt={`${project.org} website preview`}
-                loading="lazy"
-                decoding="async"
-                style={`object-position: ${project.imagePosition ?? 'center top'}`}
-              />
+              <span class="card-chrome">
+                <span class="chrome-dot chrome-dot--accent"></span>
+                <span class="chrome-dot"></span>
+                <span class="chrome-dot"></span>
+                <span class="chrome-domain">{domainFor(project.url)}</span>
+              </span>
+              <span class="card-viewport">
+                <img
+                  src={project.image}
+                  alt={`${project.org} website preview`}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </span>
             </span>
           </a>
         ))
