@@ -7,16 +7,6 @@ interface Props {
 }
 const { heading, projects } = Astro.props;
 
-function initialsOf(org: string) {
-  return org
-    .split(' ')
-    .filter(Boolean)
-    .slice(0, 2)
-    .map((word) => word[0])
-    .join('')
-    .toUpperCase();
-}
-
 const activeProject = projects[0];
 ---
 
@@ -32,14 +22,21 @@ const activeProject = projects[0];
             class:list={{ 'is-active': i === 0 }}
             style={`--diff: ${Math.max(-3, Math.min(3, i))}`}
             data-index={i}
-            data-pattern={i % 2}
             data-org={project.org}
             data-description={project.description}
             href={project.url}
             target="_blank"
             rel="noopener noreferrer nofollow"
           >
-            <span class="card-face">{initialsOf(project.org)}</span>
+            <span class="card-face">
+              <img
+                src={project.image}
+                alt={`${project.org} website preview`}
+                loading="lazy"
+                decoding="async"
+                style={`object-position: ${project.imagePosition ?? 'center top'}`}
+              />
+            </span>
           </a>
         ))
       }
@@ -181,8 +178,7 @@ const activeProject = projects[0];
     position: relative;
     width: 100%;
     height: calc(var(--card-height) + var(--space-4));
-    overflow-x: hidden;
-    overflow-y: visible;
+    overflow: hidden;
   }
 
   .card {
@@ -210,35 +206,34 @@ const activeProject = projects[0];
   }
 
   .card-face {
-    --pattern-color: rgba(241, 239, 234, 0.14);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    position: relative;
+    display: block;
     width: 100%;
     height: 100%;
     border-radius: 2px;
+    overflow: hidden;
     background-color: var(--color-text-primary);
-    background-repeat: repeat;
-    color: var(--color-surface-base);
-    font-family: var(--font-mono);
-    font-weight: 700;
-    font-size: clamp(2rem, 5vw + 1rem, 4.5rem);
-    letter-spacing: var(--tracking-tight);
   }
 
-  .card[data-pattern='0'] .card-face {
-    background-image: repeating-linear-gradient(45deg, var(--pattern-color) 0 2px, transparent 2px 16px);
+  .card-face img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    display: block;
   }
 
-  .card[data-pattern='1'] .card-face {
-    background-image: radial-gradient(var(--pattern-color) 2px, transparent 2px);
-    background-size: 16px 16px;
+  .card-face::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: var(--color-surface-base);
+    opacity: 0.55;
+    transition: opacity 0.3s ease;
   }
 
-  .card.is-active .card-face {
-    --pattern-color: rgba(19, 20, 16, 0.16);
-    background-color: var(--color-text-accent);
-    color: var(--color-text-primary);
+  .card.is-active .card-face::after {
+    opacity: 0;
   }
 
   .active-info {

@@ -2,6 +2,8 @@ export interface Project {
   org: string;
   url: string;
   description: string;
+  image: string;
+  imagePosition?: string;
 }
 
 export interface AboutParagraph {
@@ -60,56 +62,64 @@ export const en: PageContent = {
       highlight: 'Low-Code, AI and Automation',
     },
   ],
-  projectsHeading: 'Some of the projects I’ve worked on',
+  projectsHeading: 'Some of the clients I’ve worked with',
   projects: [
     {
       org: 'Minimum',
       url: 'https://www.minimum.studio/',
       description:
         'Worked for one of the best development studios in the world and built the foundations of Yonder and The Village.',
+      image: '/images/www.minimum.studio.png',
     },
     {
       org: 'Inusual',
       url: 'https://www.inusual.com/',
       description:
         'Created style guides, organized site structure, built landing pages, and optimized SEO from scratch.',
+      image: '/images/inusual.com.png',
     },
     {
       org: 'Noctorial',
       url: 'https://noctorial.com/',
       description:
         'Handled various product team responsibilities: improving their Bubble app, documentation, and website.',
+      image: '/images/noctorial.com.png',
     },
     {
       org: 'KeepCoding',
       url: 'https://keepcoding.io/',
       description: 'Served as CMO and taught classes for a digital marketing bootcamp.',
+      image: '/images/keepcoding.io.png',
+      imagePosition: 'left top',
     },
     {
       org: 'Divino Hotels',
       url: 'https://www.gghostel.com/',
       description: 'Built websites for the entire portfolio, including GG Hostel and Casa Lolita.',
+      image: '/images/divino-hotels.png',
     },
     {
       org: 'Fortnight.Studio',
       url: 'https://www.fortnight.studio/',
       description: 'Developed agentic workflows, AEO, and automation solutions.',
+      image: '/images/www.fortnight.studio.png',
+      imagePosition: 'left top',
     },
   ],
   servicesHeading: 'What I can help with',
   services: [
-    { text: 'Building apps and MVPs with Bubble.', tags: ['MVP'] },
+    { text: 'Building apps and MVPs with Bubble.', tags: ['MVP', 'WEB APPS', 'LOW-CODE AI BUILDER'] },
     {
       text: 'Creating websites and landing pages with Webflow, WordPress, or Framer.',
-      tags: ['WEBFLOW DEVELOPMENT', 'WORDPRESS DEVELOPMENT', 'DESIGN & LAYOUT'],
+      tags: ['WEBFLOW DEVELOPMENT', 'WEB DESIGN', 'DESIGN & LAYOUT'],
     },
     {
       text: 'Building automations from scratch with n8n.',
-      tags: ['WORKFLOW AUTOMATION', 'AI AUTOMATION'],
+      tags: ['WORKFLOW AUTOMATION', 'N8N AUTOMATION', 'AGENTIC WORKFLOWS'],
     },
     {
       text: 'SEO, AEO, automations, content marketing, and more.',
-      tags: ['SEO STRATEGY', 'AEO', 'CONTENT MARKETING'],
+      tags: ['SEO STRATEGY', 'AEO OPTIMIZATION', 'CONTENT MARKETING'],
     },
   ],
   ctaText: "Whether you're starting something new or improving what you have, let's chat.",
@@ -140,56 +150,64 @@ export const es: PageContent = {
       highlight: 'Low-Code, IA y Automatización',
     },
   ],
-  projectsHeading: 'Algunos de los proyectos en los que he trabajado',
+  projectsHeading: 'Algunos de los clientes con los que he trabajado',
   projects: [
     {
       org: 'Minimum',
       url: 'https://www.minimum.studio/',
       description:
         'Trabajé para uno de los mejores estudios de desarrollo del mundo y construí las bases de Yonder y The Village.',
+      image: '/images/www.minimum.studio.png',
     },
     {
       org: 'Inusual',
       url: 'https://www.inusual.com/',
       description:
         'Creé guías de estilo, organicé la estructura del sitio, construí landing pages y optimicé el SEO desde cero.',
+      image: '/images/inusual.com.png',
     },
     {
       org: 'Noctorial',
       url: 'https://noctorial.com/',
       description:
         'Me encargué de distintas responsabilidades de producto: mejorando su app en Bubble, la documentación y el sitio web.',
+      image: '/images/noctorial.com.png',
     },
     {
       org: 'KeepCoding',
       url: 'https://keepcoding.io/',
       description: 'Fui CMO y di clases en un bootcamp de marketing digital.',
+      image: '/images/keepcoding.io.png',
+      imagePosition: 'left top',
     },
     {
       org: 'Divino Hotels',
       url: 'https://www.gghostel.com/',
       description: 'Construí los sitios web de todo el portfolio, incluyendo GG Hostel y Casa Lolita.',
+      image: '/images/divino-hotels.png',
     },
     {
       org: 'Fortnight.Studio',
       url: 'https://www.fortnight.studio/',
       description: 'Desarrollé workflows agénticos, AEO y soluciones de automatización.',
+      image: '/images/www.fortnight.studio.png',
+      imagePosition: 'left top',
     },
   ],
   servicesHeading: 'En qué puedo ayudarte',
   services: [
-    { text: 'Construir apps y MVPs con Bubble.', tags: ['MVP'] },
+    { text: 'Construir apps y MVPs con Bubble.', tags: ['MVP', 'LOW-CODE AI BUILDER'] },
     {
-      text: 'Crear sitios web y landing pages con Webflow, WordPress o Framer.',
+      text: 'Crear páginas web y landing pages con Webflow, WordPress o Framer.',
       tags: ['DESARROLLO WEBFLOW', 'DESARROLLO WORDPRESS', 'DISEÑO Y MAQUETACIÓN'],
     },
     {
-      text: 'Construir automatizaciones desde cero con n8n.',
+      text: 'Construir desde cero o mantener automatizaciones con n8n o IA.',
       tags: ['AUTOMATIZACIÓN DE FLUJOS', 'AUTOMATIZACIÓN CON IA'],
     },
     {
       text: 'SEO, AEO, automatizaciones, marketing de contenido y más.',
-      tags: ['ESTRATEGIA SEO', 'AEO', 'MARKETING DE CONTENIDO'],
+      tags: ['ESTRATEGIA SEO', 'OPTIMIZACIÓN AEO', 'MARKETING DE CONTENIDO'],
     },
   ],
   ctaText: 'Ya sea que estés empezando algo nuevo o mejorando lo que ya tienes, hablemos.',
