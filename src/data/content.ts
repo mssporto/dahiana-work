@@ -35,6 +35,8 @@ export interface PageContent {
   services: Service[];
   ctaText: string;
   ctaEmail: string;
+  copyLabel: string;
+  copiedLabel: string;
   statusLine: string;
   langSwitchLabel: string;
 }
@@ -121,6 +123,8 @@ export const en: PageContent = {
   ],
   ctaText: "Whether you're starting something new or improving what you have, let's chat.",
   ctaEmail: 'hello@dahiana.work',
+  copyLabel: 'Copy email address',
+  copiedLabel: 'Copied!',
   statusLine: 'Available for new projects.',
   langSwitchLabel: 'ES',
 };
@@ -207,6 +211,8 @@ export const es: PageContent = {
   ],
   ctaText: 'Ya sea que estés empezando algo nuevo o mejorando lo que ya tienes, hablemos.',
   ctaEmail: 'hello@dahiana.work',
+  copyLabel: 'Copiar dirección de email',
+  copiedLabel: '¡Copiado!',
   statusLine: 'Disponible para nuevos proyectos.',
   langSwitchLabel: 'EN',
 };

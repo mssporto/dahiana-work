@@ -4,7 +4,7 @@ Living design-system reference. This file and `src/styles/tokens.css` must alway
 
 ## Direction
 
-Minimal, text-first, cream. Restraint comes from **one font, one accent color** — not from confining expressiveness to a single spot. Hierarchy is built from scale/weight/opacity contrast on the single typeface, used throughout every section (Hero, About, Work, Services, footer). There are two deliberate "flashy" objects in the system: a glossy, dimensionally-rendered 3D waving hand in the hero (successor to the old wave-emoji treatment) and a matching 3D envelope in the footer contact CTA — both idle-animated only, no scroll triggers.
+Minimal, text-first, cream. Restraint comes from **one font, one accent color** — not from confining expressiveness to a single spot. Hierarchy is built from scale/weight/opacity contrast on the single typeface, used throughout every section (Hero, About, Work, Services, footer). There are two deliberate "flashy" objects in the system: a glossy, dimensionally-rendered 3D waving hand in the hero (successor to the old wave-emoji treatment) and a matching 3D envelope in the footer contact CTA — both idle-animated only, no scroll triggers. A third, functionally-motivated idle animation exists on the nav's live-status dot (see Motion) — it's a status indicator, not a decorative "flashy" object, so it's tracked separately from the two-object rule above.
 
 ## Color
 
@@ -16,13 +16,15 @@ Minimal, text-first, cream. Restraint comes from **one font, one accent color** 
 | `color-text-muted` | `#4b4b47` | De-emphasized supporting copy (About body, Work row descriptions, nav readout) | ~7.7:1 on `#f1efea` — pinned to a real color, not `opacity` on `color-text-primary`, so contrast can't silently drift if the base palette changes. |
 | `color-text-on-footer` | `#ffffff` | Body/heading text on the dark footer | Pure white as text is fine; the rule is about fills, not glyphs. |
 | `color-text-accent` | `#f63d18` | Accent — fills and large type only | Hot orange-red. See usage rule below. |
+| `color-status-live` | `#1a7a4c` | Nav live-status dot only | Muted technical green — signals "available," distinct from the orange accent so status and interactive/brand-accent meanings never collide. ~4.6:1 on `#f1efea`. |
 
-**Accent usage rule:** `#f63d18` computes to ~3.3:1 against the cream body — passes AA for large text (≥24px) and non-text UI, fails AA for small text. Accent is therefore used **only** as: a fill (buttons, the footer sticker CTA, the mono-readout status dot) with near-black or white text on top, or as large display type. Never as small text or inline links sitting directly on the cream. Small inline links on cream use `color-text-primary` instead.
+**Accent usage rule:** `#f63d18` computes to ~3.3:1 against the cream body — passes AA for large text (≥24px) and non-text UI, fails AA for small text. Accent is therefore used **only** as: a fill (buttons, the footer contact CTA on hover, hover-fill on nav links) with near-black or white text on top, or as large display type. Never as small text or inline links sitting directly on the cream. Small inline links on cream use `color-text-primary` instead. The nav's live-status dot uses `color-status-live`, not the accent — status color and brand-accent color are kept semantically separate.
 
 Contrast check (WCAG AA):
 - `#131410` on `#f1efea` → ~16:1 ✅ (body text)
 - `#ffffff` on `#0a0a08` → ~19.5:1 ✅ (footer body text)
 - `#f63d18` on `#f1efea` → ~3.3:1 — fails small-text AA, passes large-text/non-text AA (3:1). Fills/large-type only.
+- `#1a7a4c` on `#f1efea` → ~4.6:1 ✅ (status dot, non-text UI)
 - `#131410` on `#f63d18` (accent fill + near-black text) → check at build time and confirm ≥4.5:1 before shipping any filled button.
 
 ## Typography
@@ -66,22 +68,27 @@ A visible but restrained hairline grid: thin, low-contrast lines barely darker t
 
 - Default button language: sharp-cornered rectangle (no border-radius, or max 2–4px), mono-spaced label text, thin border. Orange fill (`color-text-accent`) reserved for primary/hover state, with near-black text on top when filled.
 - Persistent nav bar, sharp/mono button style for its links. Nav links are anchor-scrolls to sections (About, Work, Services, Contact), not separate routes.
+- Nav link and language-switch hover is a directional wipe-fill (`scaleX` from an edge, not an opacity fade) — see Motion.
 - The footer contact CTA uses the standard interactive-element treatment (underline, hover/focus/active states), same as links elsewhere — no sticker/collage treatment anywhere in the system.
+- Footer contact row also has a small copy-to-clipboard icon button next to the email link: no border/background of its own (icon-only, matching text color), glyph is two overlapping outlined squares (a literal "copy" pictogram), swaps to a checkmark for ~1.8s after a successful copy. Sized smaller than the standard 2.75rem tap target on purpose — it's a secondary convenience action next to the primary mailto link, not a primary control.
+- Every section heading (`.section-heading`) is capped to the same 42rem content column even when its section's outer container is wider (e.g. Work's carousel needs a 64rem-wide stage, but its heading is centered within a 42rem box) — this keeps every heading's left edge aligned across Hero/About/Work/Services regardless of each section's own max-width.
 
 ## Mono live-data readout
 
 - Content: Madrid local time (`Europe/Madrid`), Madrid coordinates (`40.417 N, 3.704 W`), and a manually-maintained status line ("available for new projects" / Spanish equivalent).
 - Time is computed client-side from the real clock — never a static string baked in at build time.
 - The status line is a plain string in `content.ts`, maintained by hand — no booking/CRM integration drives it.
-- Placement: near the nav/header by default (adjustable — the only non-hard-locked placement call in the system).
+- Placement: true-centered in the nav bar via absolute positioning (`left: 50%; transform: translate(-50%, -50%)`) inside the `position: sticky` nav — a flex `space-between` layout alone would center it relative to the *gap* between the nav links and language switch, not the bar itself, and those two groups aren't equal width. Hidden below `900px` (raised from `768px` to give the centered readout room before it would otherwise collide with the flex items on either side).
+- The status dot is a live-status indicator: solid `color-status-live` dot plus a looping "radar ping" ring (`::before`, `scale` 1→2.6 with `opacity` 0.6→0, `transform`/`opacity` only) — see Motion's third idle-animation exception.
 
 ## Motion
 
 - Animate only `transform` and `opacity`. Never `transition-all`.
 - Respect `prefers-reduced-motion: reduce`.
-- Minimal/functional only: hover/focus states use `translateY` and opacity shifts, same as before. The two exceptions are the glossy 3D hand's idle animation (successor to the old wave-emoji keyframe) and the footer's 3D envelope idle animation — those are the only continuously-animated elements beyond standard hover/focus.
+- Minimal/functional only: hover/focus states use `translateY` and opacity shifts, same as before. Idle (continuously-looping) animation is capped at three elements, each with a distinct reason to run forever: the glossy 3D hand (successor to the old wave-emoji keyframe), the footer's 3D envelope, and the nav's live-status dot ping (a real status indicator, not decoration — see Mono live-data readout). No other element gets an idle animation; this cap is deliberate, not a placeholder to be raised opportunistically.
 - **One additional exception**: a one-time, per-block scroll-reveal — each section's heading/paragraph/list-item blocks fade and rise (`opacity` 0→1, `translateY(12px)`→`0`) as the section enters the viewport, staggered ~70ms per sibling. Fires once per element and never re-hides on scroll-up. No parallax, no cursor-follow, and no *repeating* or *looping* scroll effects — those remain banned.
-- **One more exception**: interactive components (currently just the Work carousel) may combine `transform` sub-properties (rotate + scale + translate together) with `opacity` in direct response to hover, click, or keyboard input. Still `transform`/`opacity` only, still never `transition-all`. `prefers-reduced-motion` collapses the response to instant, non-animated state changes. This is scoped to interaction-driven response only — not a license for new idle or scroll-triggered motion.
+- **One more exception**: interactive elements across the site (nav links/language switch, the Work carousel, the footer email CTA and its copy button) may combine `transform` sub-properties (rotate + scale + translate together) with `opacity` — and, for hover-fill wipes, `transform: scaleX` on a pseudo-element in place of an opacity fade — in direct response to hover, click, or keyboard input. Still `transform`/`opacity` only, still never `transition-all`. `prefers-reduced-motion` collapses the response to instant, non-animated state changes (or a plain background-color swap where a fill communicates the state). This is scoped to interaction-driven response only — not a license for new idle or scroll-triggered motion.
+- Concrete interaction-driven examples now in the system: nav/language-switch hover-fill wipes; the Work carousel's diagonal light sheen sweeping the active card on hover, its snappier ease-out-expo card easing, and its prev/next buttons' press-squash feedback; the footer copy button's icon-swap (copy glyph ↔ checkmark, `scale/opacity` cross-fade) on successful copy.
 
 ## Depth
 
@@ -90,10 +97,9 @@ Base → elevated → floating. No more than these three levels; don't let every
 ## Content & provenance
 
 - Source copy: `dahiana-website-text.html` — Dahiana's own authored bio/portfolio text (WordPress/Elementor export), rights owned, intended to be public.
-- Structure: Hero (greeting + 3D hand only) → About (bio, moved out of Hero) → Work (text-row list, no cards/images) → Services (text-row list) → Footer (dark band, absorbs Contact).
+- Structure: Hero (greeting + 3D hand only) → About (bio, moved out of Hero) → Services (text-row list with tag chips) → Work (a fan-stacked carousel of real project screenshots, each tile framed in a lightweight browser-chrome bar) → Footer (dark band, absorbs Contact).
 - Languages: English (default, `/`) is source-of-truth; Spanish (`/es/`) is a Claude-drafted translation, human-reviewed before publish.
 
 ## Open / deferred
 
 - No blog/CMS in scope — if one is added later, revisit the markdown-sanitizer section of `astro-website.md` before wiring in any markdown-rendered content.
-- No brand photography exists yet — the Work section is text-only rows for this reason, not a placeholder state to be "fixed" later by adding cards.
