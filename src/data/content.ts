@@ -3,7 +3,6 @@ export interface Project {
   url: string;
   description: string;
   image: string;
-  imagePosition?: string;
 }
 
 export interface AboutParagraph {
@@ -90,7 +89,6 @@ export const en: PageContent = {
       url: 'https://keepcoding.io/',
       description: 'Served as CMO and taught classes for a digital marketing bootcamp.',
       image: '/images/keepcoding.io.png',
-      imagePosition: 'left top',
     },
     {
       org: 'Divino Hotels',
@@ -103,7 +101,6 @@ export const en: PageContent = {
       url: 'https://www.fortnight.studio/',
       description: 'Developed agentic workflows, AEO, and automation solutions.',
       image: '/images/www.fortnight.studio.png',
-      imagePosition: 'left top',
     },
   ],
   servicesHeading: 'What I can help with',
@@ -178,7 +175,6 @@ export const es: PageContent = {
       url: 'https://keepcoding.io/',
       description: 'Fui CMO y di clases en un bootcamp de marketing digital.',
       image: '/images/keepcoding.io.png',
-      imagePosition: 'left top',
     },
     {
       org: 'Divino Hotels',
@@ -191,7 +187,6 @@ export const es: PageContent = {
       url: 'https://www.fortnight.studio/',
       description: 'Desarrollé workflows agénticos, AEO y soluciones de automatización.',
       image: '/images/www.fortnight.studio.png',
-      imagePosition: 'left top',
     },
   ],
   servicesHeading: 'En qué puedo ayudarte',
