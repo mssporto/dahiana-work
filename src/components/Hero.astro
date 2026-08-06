@@ -1,4 +1,7 @@
 ---
+import { Image } from 'astro:assets';
+import wavingHand from '../images/waving-hand-3d.png';
+
 interface Props {
   greeting: string;
 }
@@ -9,7 +12,7 @@ const { greeting } = Astro.props;
   <h1 class="hero-title">
     {greeting}
     <span class="hand" aria-hidden="true">
-      <img src="/images/waving-hand-3d.png" alt="" width="256" height="256" loading="eager" />
+      <Image src={wavingHand} alt="" width={144} height={144} loading="eager" />
     </span>
   </h1>
 </section>

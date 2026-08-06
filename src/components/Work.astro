@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import type { Project } from '../data/content';
 
 interface Props {
@@ -8,6 +9,8 @@ interface Props {
 const { heading, projects } = Astro.props;
 
 const activeProject = projects[0];
+
+const projectImages = import.meta.glob<{ default: ImageMetadata }>('../images/*.png', { eager: true });
 
 function domainFor(url: string): string {
   return new URL(url).hostname.replace(/^www\./, '');
@@ -40,11 +43,12 @@ function domainFor(url: string): string {
                 <span class="chrome-domain">{domainFor(project.url)}</span>
               </span>
               <span class="card-viewport">
-                <img
-                  src={project.image}
-                  alt={`${project.org} website preview`}
+                <Image
+                  src={projectImages[`../images/${project.image}`].default}
+                  alt={project.imageAlt}
+                  width={1000}
+                  height={511}
                   loading="lazy"
-                  decoding="async"
                 />
               </span>
             </span>

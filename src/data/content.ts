@@ -3,6 +3,7 @@ export interface Project {
   url: string;
   description: string;
   image: string;
+  imageAlt: string;
 }
 
 export interface AboutParagraph {
@@ -59,7 +60,7 @@ export const en: PageContent = {
       highlight: "I'm a low-code and AI builder.",
     },
     {
-      text: "So for the past four years, I've been developing products using Low-Code, AI and Automation, while also diving into design and doing some teaching along the way.",
+      text: "So for the past four years, I've been developing products using Low-Code, AI and Automation — Bubble, Webflow, WordPress, Framer, and n8n — while also diving into design, SEO/AEO strategy, and doing some teaching along the way.",
       highlight: 'Low-Code, AI and Automation',
     },
   ],
@@ -70,54 +71,63 @@ export const en: PageContent = {
       url: 'https://www.minimum.studio/',
       description:
         'Worked for one of the best development studios in the world and built the foundations of Yonder and The Village.',
-      image: '/images/www.minimum.studio.png',
+      image: 'www.minimum.studio.png',
+      imageAlt: 'Minimum Studio website homepage, a development studio site Dahiana helped build the foundations of',
     },
     {
       org: 'Inusual',
       url: 'https://www.inusual.com/',
       description:
         'Created style guides, organized site structure, built landing pages, and optimized SEO from scratch.',
-      image: '/images/inusual.com.png',
+      image: 'inusual.com.png',
+      imageAlt: 'Inusual website homepage, built with a style guide and SEO structure created from scratch',
     },
     {
       org: 'Noctorial',
       url: 'https://noctorial.com/',
       description:
         'Handled various product team responsibilities: improving their Bubble app, documentation, and website.',
-      image: '/images/noctorial.com.png',
+      image: 'noctorial.com.png',
+      imageAlt: 'Noctorial website homepage, a Bubble app product Dahiana improved alongside its documentation',
     },
     {
       org: 'KeepCoding',
       url: 'https://keepcoding.io/',
       description: 'Served as CMO and taught classes for a digital marketing bootcamp.',
-      image: '/images/keepcoding.io.png',
+      image: 'keepcoding.io.png',
+      imageAlt: 'KeepCoding website homepage, a digital marketing bootcamp where Dahiana served as CMO',
     },
     {
       org: 'Divino Hotels',
       url: 'https://www.gghostel.com/',
       description: 'Built websites for the entire portfolio, including GG Hostel and Casa Lolita.',
-      image: '/images/divino-hotels.png',
+      image: 'divino-hotels.png',
+      imageAlt: 'Divino Hotels portfolio website, including GG Hostel and Casa Lolita, built by Dahiana',
     },
     {
       org: 'Fortnight.Studio',
       url: 'https://www.fortnight.studio/',
       description: 'Developed agentic workflows, AEO, and automation solutions.',
-      image: '/images/www.fortnight.studio.png',
+      image: 'www.fortnight.studio.png',
+      imageAlt: 'Fortnight.Studio website homepage, where Dahiana developed agentic AEO and automation workflows',
     },
   ],
   servicesHeading: 'What I can help with',
   services: [
-    { text: 'Building apps and MVPs with Bubble.', tags: ['MVP', 'WEB APPS', 'LOW-CODE AI BUILDER'] },
+    {
+      text: 'Building apps and MVPs with Bubble — from a first prototype to a working product.',
+      tags: ['MVP', 'WEB APPS', 'LOW-CODE AI BUILDER'],
+    },
     {
       text: 'Creating websites and landing pages with Webflow, WordPress, or Framer.',
       tags: ['WEBFLOW DEVELOPMENT', 'WEB DESIGN', 'DESIGN & LAYOUT'],
     },
     {
-      text: 'Building automations from scratch with n8n.',
+      text: 'Building automations from scratch with n8n, including AI/agentic workflows.',
       tags: ['WORKFLOW AUTOMATION', 'N8N AUTOMATION', 'AGENTIC WORKFLOWS'],
     },
     {
-      text: 'SEO, AEO, automations, content marketing, and more.',
+      text: 'SEO and AEO strategy, content marketing, and making sites easier for AI answer engines to cite.',
       tags: ['SEO STRATEGY', 'AEO OPTIMIZATION', 'CONTENT MARKETING'],
     },
   ],
@@ -147,7 +157,7 @@ export const es: PageContent = {
       highlight: 'Soy constructora low-code y de IA.',
     },
     {
-      text: 'Así que durante los últimos cuatro años he estado desarrollando productos con Low-Code, IA y Automatización, mientras profundizaba en diseño y enseñaba en el camino.',
+      text: 'Así que durante los últimos cuatro años he estado desarrollando productos con Low-Code, IA y Automatización — Bubble, Webflow, WordPress, Framer y n8n — mientras profundizaba en diseño, estrategia SEO/AEO, y enseñaba en el camino.',
       highlight: 'Low-Code, IA y Automatización',
     },
   ],
@@ -158,54 +168,63 @@ export const es: PageContent = {
       url: 'https://www.minimum.studio/',
       description:
         'Trabajé para uno de los mejores estudios de desarrollo del mundo y construí las bases de Yonder y The Village.',
-      image: '/images/www.minimum.studio.png',
+      image: 'www.minimum.studio.png',
+      imageAlt: 'Página de inicio de Minimum Studio, un estudio de desarrollo cuyas bases ayudó a construir Dahiana',
     },
     {
       org: 'Inusual',
       url: 'https://www.inusual.com/',
       description:
         'Creé guías de estilo, organicé la estructura del sitio, construí landing pages y optimicé el SEO desde cero.',
-      image: '/images/inusual.com.png',
+      image: 'inusual.com.png',
+      imageAlt: 'Página de inicio de Inusual, construida con una guía de estilo y estructura SEO creadas desde cero',
     },
     {
       org: 'Noctorial',
       url: 'https://noctorial.com/',
       description:
         'Me encargué de distintas responsabilidades de producto: mejorando su app en Bubble, la documentación y el sitio web.',
-      image: '/images/noctorial.com.png',
+      image: 'noctorial.com.png',
+      imageAlt: 'Página de inicio de Noctorial, un producto en Bubble que Dahiana mejoró junto con su documentación',
     },
     {
       org: 'KeepCoding',
       url: 'https://keepcoding.io/',
       description: 'Fui CMO y di clases en un bootcamp de marketing digital.',
-      image: '/images/keepcoding.io.png',
+      image: 'keepcoding.io.png',
+      imageAlt: 'Página de inicio de KeepCoding, un bootcamp de marketing digital donde Dahiana fue CMO',
     },
     {
       org: 'Divino Hotels',
       url: 'https://www.gghostel.com/',
       description: 'Construí los sitios web de todo el portfolio, incluyendo GG Hostel y Casa Lolita.',
-      image: '/images/divino-hotels.png',
+      image: 'divino-hotels.png',
+      imageAlt: 'Sitio web del portfolio de Divino Hotels, incluyendo GG Hostel y Casa Lolita, construido por Dahiana',
     },
     {
       org: 'Fortnight.Studio',
       url: 'https://www.fortnight.studio/',
       description: 'Desarrollé workflows agénticos, AEO y soluciones de automatización.',
-      image: '/images/www.fortnight.studio.png',
+      image: 'www.fortnight.studio.png',
+      imageAlt: 'Página de inicio de Fortnight.Studio, donde Dahiana desarrolló workflows agénticos de AEO y automatización',
     },
   ],
   servicesHeading: 'En qué puedo ayudarte',
   services: [
-    { text: 'Construir apps y MVPs con Bubble.', tags: ['MVP', 'LOW-CODE AI BUILDER'] },
+    {
+      text: 'Construir apps y MVPs con Bubble — desde un primer prototipo hasta un producto funcional.',
+      tags: ['MVP', 'LOW-CODE AI BUILDER'],
+    },
     {
       text: 'Crear páginas web y landing pages con Webflow, WordPress o Framer.',
       tags: ['DESARROLLO WEBFLOW', 'DESARROLLO WORDPRESS', 'DISEÑO Y MAQUETACIÓN'],
     },
     {
-      text: 'Construir desde cero o mantener automatizaciones con n8n o IA.',
+      text: 'Construir desde cero o mantener automatizaciones con n8n o IA, incluyendo workflows agénticos.',
       tags: ['AUTOMATIZACIÓN DE FLUJOS', 'AUTOMATIZACIÓN CON IA'],
     },
     {
-      text: 'SEO, AEO, automatizaciones, marketing de contenido y más.',
+      text: 'Estrategia SEO y AEO, marketing de contenido, y hacer que los sitios sean más fáciles de citar para motores de respuesta con IA.',
       tags: ['ESTRATEGIA SEO', 'OPTIMIZACIÓN AEO', 'MARKETING DE CONTENIDO'],
     },
   ],
