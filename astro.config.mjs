@@ -12,7 +12,14 @@ export default defineConfig({
       prefixDefaultLocale: false,
     },
   },
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      serialize(item) {
+        item.lastmod = new Date().toISOString();
+        return item;
+      },
+    }),
+  ],
   security: {
     // Astro emits a <meta http-equiv="content-security-policy"> with hashes
     // for every script/style it bundles.

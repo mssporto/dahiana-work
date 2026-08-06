@@ -1,4 +1,7 @@
 ---
+import { Image } from 'astro:assets';
+import envelope3d from '../images/envelope-3d.png';
+
 interface Props {
   ctaText: string;
   ctaEmail: string;
@@ -15,7 +18,7 @@ const { ctaText, ctaEmail, copyLabel, copiedLabel } = Astro.props;
     <div class="contact-row reveal-item">
       <a class="email-cta" href={`mailto:${ctaEmail}`}>
         <span class="envelope" aria-hidden="true">
-          <img src="/images/envelope-3d.png" alt="" width="256" height="256" loading="lazy" />
+          <Image src={envelope3d} alt="" width={88} height={88} loading="lazy" />
         </span>
         <span class="email-link">{ctaEmail}</span>
       </a>
