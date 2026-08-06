@@ -58,6 +58,35 @@ const personJsonLd = {
   </body>
 </html>
 
+<script>
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const sections = document.querySelectorAll<HTMLElement>('[data-reveal]');
+
+  if (!prefersReducedMotion && sections.length && 'IntersectionObserver' in window) {
+    sections.forEach((section) => section.classList.add('reveal-pending'));
+
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.remove('reveal-pending');
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+  }
+
+  console.log(
+    '%cPoking around the code?%c\nThe status line up there is updated by hand, not a cron job. hello@dahiana.work',
+    'color:#f63d18;font-weight:700;',
+    'color:inherit;font-weight:400;',
+  );
+</script>
+
 <style>
   :global(html) {
     background: var(--color-surface-base);
@@ -86,5 +115,44 @@ const personJsonLd = {
   .skip-link:focus {
     left: var(--space-2);
     top: var(--space-2);
+  }
+
+  :global([data-reveal] .reveal-item) {
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  :global([data-reveal].reveal-pending .reveal-item) {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  :global([data-reveal] .reveal-item:nth-child(2)) {
+    transition-delay: 70ms;
+  }
+
+  :global([data-reveal] .reveal-item:nth-child(3)) {
+    transition-delay: 140ms;
+  }
+
+  :global([data-reveal] .reveal-item:nth-child(4)) {
+    transition-delay: 210ms;
+  }
+
+  :global([data-reveal] .reveal-item:nth-child(5)) {
+    transition-delay: 280ms;
+  }
+
+  :global([data-reveal] .reveal-item:nth-child(6)) {
+    transition-delay: 350ms;
+  }
+
+  :global([data-reveal] .reveal-item:nth-child(7)) {
+    transition-delay: 420ms;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :global([data-reveal] .reveal-item) {
+      transition: none;
+    }
   }
 </style>

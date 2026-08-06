@@ -13,7 +13,13 @@ import { es } from '../../data/content';
   <Nav slot="nav" nav={es.nav} statusLine={es.statusLine} langHref="/" langLabel={es.langSwitchLabel} />
   <Hero greeting={es.greeting} />
   <About about={es.about} />
-  <Work heading={es.projectsHeading} projects={es.projects} />
   <Services servicesHeading={es.servicesHeading} services={es.services} />
-  <Footer slot="footer" ctaText={es.ctaText} ctaEmail={es.ctaEmail} />
+  <Work heading={es.projectsHeading} projects={es.projects} />
+  <Footer
+    slot="footer"
+    ctaText={es.ctaText}
+    ctaEmail={es.ctaEmail}
+    copyLabel={es.copyLabel}
+    copiedLabel={es.copiedLabel}
+  />
 </BaseLayout>

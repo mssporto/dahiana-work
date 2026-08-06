@@ -2,19 +2,64 @@
 interface Props {
   ctaText: string;
   ctaEmail: string;
+  copyLabel: string;
+  copiedLabel: string;
 }
-const { ctaText, ctaEmail } = Astro.props;
+const { ctaText, ctaEmail, copyLabel, copiedLabel } = Astro.props;
 ---
 
-<footer class="footer" id="contact" aria-labelledby="contact-heading">
+<footer class="footer" id="contact" aria-labelledby="contact-heading" data-reveal>
   <div class="footer-inner">
     <h2 id="contact-heading" class="visually-hidden">Contact</h2>
-    <p class="cta-text">{ctaText}</p>
-    <a class="sticker" href={`mailto:${ctaEmail}`}>
-      <span>{ctaEmail}</span>
-    </a>
+    <p class="cta-text reveal-item">{ctaText}</p>
+    <div class="contact-row reveal-item">
+      <a class="email-cta" href={`mailto:${ctaEmail}`}>
+        <span class="envelope" aria-hidden="true">
+          <img src="/images/envelope-3d.png" alt="" width="256" height="256" loading="lazy" />
+        </span>
+        <span class="email-link">{ctaEmail}</span>
+      </a>
+      <button
+        type="button"
+        class="copy-btn"
+        data-copy-email={ctaEmail}
+        data-copy-label={copyLabel}
+        data-copied-label={copiedLabel}
+        aria-label={copyLabel}
+      >
+        <svg class="icon icon-copy" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+          <rect x="3.5" y="3.5" width="9" height="9" rx="1.25" fill="none" stroke="currentColor" stroke-width="1.5" />
+          <rect x="7.5" y="7.5" width="9" height="9" rx="1.25" fill="none" stroke="currentColor" stroke-width="1.5" />
+        </svg>
+        <svg class="icon icon-check" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+          <path d="M4 10.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </button>
+    </div>
   </div>
 </footer>
+
+<script>
+  const copyBtn = document.querySelector<HTMLButtonElement>('.copy-btn');
+  if (copyBtn) {
+    let resetTimer: ReturnType<typeof setTimeout>;
+    copyBtn.addEventListener('click', async () => {
+      const email = copyBtn.dataset.copyEmail ?? '';
+      try {
+        await navigator.clipboard.writeText(email);
+      } catch {
+        return;
+      }
+      clearTimeout(resetTimer);
+      copyBtn.classList.add('is-copied');
+      copyBtn.setAttribute('aria-label', copyBtn.dataset.copiedLabel ?? '');
+      resetTimer = setTimeout(() => {
+        copyBtn.classList.remove('is-copied');
+        copyBtn.setAttribute('aria-label', copyBtn.dataset.copyLabel ?? '');
+      }, 1800);
+    });
+  }
+</script>
 
 <style>
   .footer {
@@ -37,41 +82,151 @@ const { ctaText, ctaEmail } = Astro.props;
     margin: 0 0 var(--space-6);
   }
 
-  .sticker {
-    position: relative;
-    display: inline-block;
-    background: var(--color-text-accent);
-    color: var(--color-text-primary);
-    font-weight: 700;
-    font-size: var(--font-size-body);
-    padding: var(--space-3) var(--space-4);
+  .contact-row {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .email-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
     text-decoration: none;
-    transform: rotate(-2deg);
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.38);
-    transition: transform 0.2s ease;
+    transition: transform 0.15s ease, opacity 0.15s ease;
   }
 
-  .sticker::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 0.9rem;
-    height: 0.9rem;
-    background: linear-gradient(135deg, rgba(19, 20, 16, 0.25) 50%, transparent 51%);
+  .email-cta:hover {
+    transform: translateY(-2px) scale(1.02);
+    opacity: 0.8;
   }
 
-  .sticker:hover {
-    transform: rotate(-2deg) translateY(-3px);
-  }
-
-  .sticker:focus-visible {
-    outline: 2px solid var(--color-text-on-footer);
+  .email-cta:focus-visible {
+    outline: 2px solid var(--color-text-accent);
     outline-offset: 3px;
   }
 
-  .sticker:active {
-    transform: rotate(-2deg) translateY(0);
+  .email-cta:active {
+    transform: translateY(0) scale(0.98);
+    opacity: 1;
+  }
+
+  .envelope {
+    display: inline-block;
+    width: clamp(1.75rem, 2.5vw + 1rem, 2.75rem);
+    transform-origin: 50% 60%;
+    animation: envelope-idle 3.6s ease-in-out infinite;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.45));
+  }
+
+  .envelope img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  @keyframes envelope-idle {
+    0%,
+    60%,
+    100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    15% {
+      transform: translateY(-6px) rotate(-3deg);
+    }
+    30% {
+      transform: translateY(0) rotate(3deg);
+    }
+    45% {
+      transform: translateY(-3px) rotate(-1deg);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .envelope {
+      animation: none;
+    }
+  }
+
+  .email-link {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-body);
+    font-weight: 700;
+    color: var(--color-text-on-footer);
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+  }
+
+  .copy-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    flex-shrink: 0;
+    color: var(--color-text-on-footer);
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), color 0.15s ease;
+  }
+
+  .copy-btn:hover {
+    transform: translateY(-1px);
+    color: var(--color-text-accent);
+  }
+
+  .copy-btn:active {
+    transform: translateY(0) scale(0.9);
+  }
+
+  .copy-btn:focus-visible {
+    outline: 2px solid var(--color-text-accent);
+    outline-offset: 3px;
+  }
+
+  .icon {
+    position: absolute;
+    width: 0.8125rem;
+    height: 0.8125rem;
+    transition: opacity 0.2s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .icon-check {
+    color: var(--color-text-accent);
+    opacity: 0;
+    transform: scale(0.5);
+  }
+
+  .icon-copy {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .copy-btn.is-copied .icon-copy {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+
+  .copy-btn.is-copied .icon-check {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .copy-btn,
+    .copy-btn:hover,
+    .copy-btn:active {
+      transition: border-color 0.15s ease, background-color 0.15s ease;
+      transform: none;
+    }
+
+    .icon {
+      transition: opacity 0.15s ease;
+      transform: none !important;
+    }
   }
 
   .visually-hidden {

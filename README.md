@@ -44,3 +44,4 @@ public/
 ## Third-party assets
 
 - `public/images/waving-hand-3d.png` — Waving Hand, 3D style, from [microsoft/fluentui-emoji](https://github.com/microsoft/fluentui-emoji), MIT License, Copyright (c) Microsoft Corporation.
+- `public/images/envelope-3d.png` — Envelope, 3D style, from [microsoft/fluentui-emoji](https://github.com/microsoft/fluentui-emoji), MIT License, Copyright (c) Microsoft Corporation.

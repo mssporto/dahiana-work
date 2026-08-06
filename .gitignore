@@ -26,3 +26,12 @@ pnpm-debug.log*
 # editor / tooling
 .vscode/
 .playwright-mcp/
+.superpowers/
+
+# internal working docs — kept locally, not tracked in the repo
+# (README.md, CLAUDE.md, and design.md stay tracked — everything else .md doesn't)
+/*.md
+!/README.md
+!/CLAUDE.md
+!/design.md
+docs/

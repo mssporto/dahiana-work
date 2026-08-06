@@ -1,4 +1,7 @@
 {
+  "worktree": {
+    "baseRef": "head"
+  },
   "permissions": {
     "allow": [
       "Bash(curl -s \"https://api.github.com/repos/microsoft/fluentui-emoji/contents/assets/Waving%20hand/3D\")",
@@ -11,7 +14,34 @@
       "Bash(grep -rInE '\\(api[_-]?key|secret|passwd|password|bearer |BEGIN [A-Z ]*PRIVATE KEY|sk-[A-Za-z0-9]{16,}|xox[baprs]-|AKIA[0-9A-Z]{16}|ghp_[A-Za-z0-9]{20,}\\)' --exclude-dir=node_modules --exclude-dir=dist --exclude-dir=.astro --exclude-dir=.git .)",
       "Bash(grep -rInoE '[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\\\.[A-Za-z]{2,}' --exclude-dir=node_modules --exclude-dir=dist --exclude-dir=.astro --exclude-dir=.git .)",
       "Bash(git init *)",
-      "Bash(git branch *)"
+      "Bash(git branch *)",
+      "Bash(git remote *)",
+      "WebFetch(domain:poly.pizza)",
+      "Bash(curl -sL \"https://poly.pizza/m/BEy8jbxm6A\")",
+      "Bash(curl -sL \"https://api.poly.pizza/2.0/details/BEy8jbxm6A\")",
+      "Bash(curl -sL -o public/models/rigged-hand.glb \"https://static.poly.pizza/a36ea2d8-8437-4215-98d3-2fa53be67d85.glb\")",
+      "Bash(node -e ' *)",
+      "Bash(npm ci *)",
+      "Bash(git mv *)",
+      "Bash(curl -s \"https://api.github.com/repos/microsoft/fluentui-emoji/contents/assets\")",
+      "Bash(curl -s \"https://api.github.com/repos/microsoft/fluentui-emoji/contents/assets/Envelope/3D\")",
+      "Bash(curl -sL \"https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Envelope/3D/envelope_3d.png\" -o public/images/envelope-3d.png)",
+      "Bash(curl -s \"https://api.github.com/repos/microsoft/fluentui-emoji/contents/assets/Incoming%20envelope/3D\")",
+      "Bash(curl -sL \"https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Incoming%20envelope/3D/incoming_envelope_3d.png\" -o public/images/incoming-envelope-3d.png)",
+      "mcp__playwright__browser_hover",
+      "Bash(git fetch *)",
+      "Bash(gh pr create --base main --head footer-cta --title 'Footer CTA: retire sticker, ship 3D envelope, rewrite handoff' --body ' *)",
+      "Bash(curl -s \"http://localhost:4321/src/components/Work.astro?astro&type=script&index=0&lang.ts\")",
+      "Bash(python3 -)",
+      "Bash(bash /Users/dahiana/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/brainstorming/scripts/start-server.sh --project-dir /Users/dahiana/Documents/Claude_Code/dahiana_work --open)",
+      "Bash(git -C /Users/dahiana/Documents/Claude_Code/dahiana_work log --oneline -- docs/superpowers/plans/)",
+      "Bash(git -C /Users/dahiana/Documents/Claude_Code/dahiana_work status --porcelain)",
+      "Bash(git -C /Users/dahiana/Documents/Claude_Code/dahiana_work log --oneline -3)",
+      "Bash(git -C /Users/dahiana/Documents/Claude_Code/dahiana_work worktree list)",
+      "Bash(git -C /Users/dahiana/Documents/Claude_Code/dahiana_work branch --show-current)",
+      "Bash(git -C /Users/dahiana/Documents/Claude_Code/dahiana_work diff .claude/settings.json .gitignore)",
+      "Bash(git -C /Users/dahiana/Documents/Claude_Code/dahiana_work fetch origin)",
+      "Bash(git -C /Users/dahiana/Documents/Claude_Code/dahiana_work log origin/main..content-updates --oneline)"
     ]
   }
 }
