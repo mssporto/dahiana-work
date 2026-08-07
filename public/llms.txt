@@ -1,10 +1,10 @@
 # Dahiana Porto
 
-> Low-code and AI builder. Started in marketing, grew into a CMO role, moved into building products with low-code tools, design, and teaching.
+> Low-code and AI Product Builder. Started in marketing, grew into a CMO role, moved into building products with low-code tools, design, and teaching.
 
 ## Background
 
-Dahiana Porto is a low-code and AI builder. She started in marketing, became a CMO, and for the past four years has been building products with low-code tools (Bubble, Webflow, WordPress, Framer), n8n automations, and AI/agentic workflows.
+Dahiana Porto is a low-code and AI Product Builder. She started in marketing, became a CMO, and for the past four years has been building products with low-code tools (Bubble, Webflow, WordPress, Framer), n8n automations, and AI/agentic workflows.
 
 ## Selected work
 
@@ -12,12 +12,12 @@ Dahiana Porto is a low-code and AI builder. She started in marketing, became a C
 - Created style guides, site structure, landing pages, and SEO from scratch for Inusual.
 - Improved the Bubble app, documentation, and website for Noctorial.
 - Served as CMO and taught digital marketing classes at KeepCoding.
-- Built websites for the Divino Hotels portfolio, including GG Hostel and Casa Lolita.
+- Built websites with Webflow using Client First Framework for the Divino Hotels portfolio, including GG Hostel and Casa Lolita.
 - Developed agentic workflows, AEO, and automation solutions for Fortnight.Studio.
 
 ## What she can help with
 
-- Building apps and MVPs with Bubble.
+- Building products and MVPs with AI and Bubble.
 - Creating websites and landing pages with Webflow, WordPress, or Framer.
 - Building automations from scratch with n8n.
 - SEO, AEO, automations, and content marketing.

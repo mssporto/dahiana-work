@@ -158,7 +158,7 @@ export const es: PageContent = {
     },
     {
       text: 'Así que en los últimos años he estado desarrollando productos con low-code, ia y automatización, además de herramientas no-code como Bubble, Webflow, WordPress, Framer y n8n, mientras profundizaba en diseño, estrategia seo/aeo y daba alguna clase por el camino.',
-      highlight: 'low-code, ia y automatización',
+      highlight: 'low-code, ia y automatizaciones',
     },
   ],
   projectsHeading: 'Algunos de los clientes con los que he trabajado',
@@ -192,7 +192,7 @@ export const es: PageContent = {
       url: 'https://keepcoding.io/',
       description: 'Fui CMO y di clases en un bootcamp de marketing digital.',
       image: 'keepcoding.io.png',
-      imageAlt: 'Página de inicio de KeepCoding, donde Dahiana fue CMO',
+      imageAlt: 'Página de inicio de KeepCoding, un bootcamp de marketing digital donde Dahiana fue CMO',
     },
     {
       org: 'Divino Hotels',
@@ -213,7 +213,7 @@ export const es: PageContent = {
   services: [
     {
       text: 'Construir apps y MVPs con Bubble — desde un primer prototipo hasta un producto funcional.',
-      tags: ['MVP', 'LOW-CODE AI BUILDER'],
+      tags: ['MVP', 'AI PRODUCT BUILDER'],
     },
     {
       text: 'Crear páginas web y landing pages con Webflow, WordPress o Framer.',
@@ -221,7 +221,7 @@ export const es: PageContent = {
     },
     {
       text: 'Construir desde cero o mantener automatizaciones con n8n o IA, incluyendo workflows agénticos.',
-      tags: ['AUTOMATIZACIÓN DE FLUJOS', 'AUTOMATIZACIÓN CON IA'],
+      tags: ['MANTENIMIENTO DE FLUJOS', 'AUTOMATIZACIÓN CON IA'],
     },
     {
       text: 'Estrategia SEO y AEO, marketing de contenido, y hacer que los sitios sean más fáciles de citar para motores de respuesta con IA.',
