@@ -18,7 +18,7 @@ Minimal, text-first, cream. Restraint comes from **one font, one accent color** 
 | `color-text-accent` | `#f63d18` | Accent — fills and large type only | Hot orange-red. See usage rule below. |
 | `color-status-live` | `#1a7a4c` | Nav live-status dot only | Muted technical green — signals "available," distinct from the orange accent so status and interactive/brand-accent meanings never collide. ~4.6:1 on `#f1efea`. |
 
-**Accent usage rule:** `#f63d18` computes to ~3.3:1 against the cream body — passes AA for large text (≥24px) and non-text UI, fails AA for small text. Accent is therefore used **only** as: a fill (buttons, the footer contact CTA on hover, hover-fill on nav links) with near-black or white text on top, or as large display type. Never as small text or inline links sitting directly on the cream. Small inline links on cream use `color-text-primary` instead. The nav's live-status dot uses `color-status-live`, not the accent — status color and brand-accent color are kept semantically separate.
+**Accent usage rule:** `#f63d18` computes to ~3.3:1 against the cream body — passes AA for large text (≥24px) and non-text UI, fails AA for small text. Accent is therefore used **only** as: a fill (buttons, the footer contact CTA on hover, hover-fill on nav links) with near-black or white text on top, or as large display type ≥24px enforced by an explicit `font-size` floor, not left to a paragraph's own responsive clamp (the About section's `.accent-highlight` inherited its parent paragraph's clamp and dipped to ~19.75px at narrow viewports — still technically WCAG-compliant at that size, but under this file's own ≥24px bar; it now sets its own `clamp(1.5rem, 1vw + 1.3rem, 1.75rem)` floor). Never as small text or inline links sitting directly on the cream. Small inline links on cream use `color-text-primary` instead. The nav's live-status dot uses `color-status-live`, not the accent — status color and brand-accent color are kept semantically separate.
 
 Contrast check (WCAG AA):
 - `#131410` on `#f1efea` → ~16:1 ✅ (body text)
@@ -53,12 +53,17 @@ Contrast check (WCAG AA):
 | `space-6` | `3rem` (48px) |
 | `space-8` | `4rem` (64px) |
 | `space-12` | `6rem` (96px) |
+| `space-16` | `8rem` (128px) |
 
 No ad-hoc pixel values outside this scale.
 
 ## Breakpoints
 
 Mobile-first. Test at minimum: `375px`, `768px`, `1024px`, `1440px`.
+
+## Box model
+
+Global `box-sizing: border-box` reset (`*`, `*::before`, `*::after`, set in `BaseLayout`) — required for the `2.75rem` tap-target convention below to actually measure `2.75rem`. Without it, an anchor with `min-height: 2.75rem` plus its own padding/border renders taller than 44px (verified: nav pills/lang-switch rendered 62px before this reset). `<button>` elements are unaffected either way — browsers default them to `border-box` already.
 
 ## Grid system
 
@@ -70,8 +75,11 @@ A visible but restrained hairline grid: thin, low-contrast lines barely darker t
 - Persistent nav bar, sharp/mono button style for its links. Nav links are anchor-scrolls to sections (About, Work, Services, Contact), not separate routes.
 - Nav link and language-switch hover is a directional wipe-fill (`scaleX` from an edge, not an opacity fade) — see Motion.
 - The footer contact CTA uses the standard interactive-element treatment (underline, hover/focus/active states), same as links elsewhere — no sticker/collage treatment anywhere in the system.
-- Footer contact row also has a small copy-to-clipboard icon button next to the email link: no border/background of its own (icon-only, matching text color), glyph is two overlapping outlined squares (a literal "copy" pictogram), swaps to a checkmark for ~1.8s after a successful copy. Sized smaller than the standard 2.75rem tap target on purpose — it's a secondary convenience action next to the primary mailto link, not a primary control.
+- Footer contact row also has a small copy-to-clipboard icon button next to the email link: no border/background of its own (icon-only, matching text color), glyph is two overlapping outlined squares (a literal "copy" pictogram), swaps to a checkmark for ~1.8s after a successful copy. Sized smaller than the standard 2.75rem tap target on purpose — it's a secondary convenience action next to the primary mailto link, not a primary control. Sits at `space-1` (8px) from the email link — tight enough to read as "belonging to" the email, not a third, unrelated row item.
+- Footer vertical padding is fluid — `clamp(space-12, 14vw, space-16)` — so the closing band gets proportionally more breathing room on wide viewports instead of staying pinned to a fixed 96px regardless of screen size. The `cta-text` and `email-link` sizes scale up with it (`clamp()`, larger max than before) so the closing statement and CTA read as a deliberate finale, not an afterthought.
 - Every section heading (`.section-heading`) is capped to the same 42rem content column even when its section's outer container is wider (e.g. Work's carousel needs a 64rem-wide stage, but its heading is centered within a 42rem box) — this keeps every heading's left edge aligned across Hero/About/Work/Services regardless of each section's own max-width.
+- Work carousel dots are `2.75rem` (44px) tap targets — unlike the footer copy button, dots are the *primary* way to jump between projects on touch, so they get the standard target size even though the visible glyph (the `::after` square) stays small.
+- Work carousel cards are real links (they navigate to the live project URL) but only when already active — clicking/activating an inactive card brings it to the front instead. Each card's `aria-label` reflects this dynamically ("… — select to bring to front" vs "… — opens in a new tab"), and a visually-hidden instruction paragraph (`aria-describedby` on the carousel group) spells out the pattern for assistive tech. Keep both in sync if the interaction model ever changes.
 
 ## Mono live-data readout
 

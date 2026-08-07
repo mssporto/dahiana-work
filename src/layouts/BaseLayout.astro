@@ -1,28 +1,27 @@
 ---
 import '../styles/tokens.css';
 import { getRelativeLocaleUrl } from 'astro:i18n';
+import type { Project } from '../data/content';
 
 interface Props {
   title: string;
   description: string;
   lang: 'en' | 'es';
+  projects?: Project[];
 }
 
-const { title, description, lang } = Astro.props;
+const { title, description, lang, projects } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const altLang = lang === 'en' ? 'es' : 'en';
 const altPath = getRelativeLocaleUrl(altLang, '', { normalizeLocale: false });
 const ogImageURL = new URL('/images/og-card.png', Astro.site);
+const ogLocale = lang === 'en' ? 'en_US' : 'es_ES';
+const ogLocaleAlternate = lang === 'en' ? 'es_ES' : 'en_US';
 
-const personJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'ProfilePage',
-  dateModified: new Date().toISOString(),
-  mainEntity: {
-    '@type': 'Person',
-    name: 'Dahiana Porto',
-    url: 'https://dahiana.work',
-    email: 'mailto:hello@dahiana.work',
+const personById = 'https://dahiana.work/#person';
+
+const personCopy = {
+  en: {
     jobTitle: 'Low-code & AI builder',
     description:
       'Low-code and AI builder. Started in marketing, grew into a CMO role, moved into building products with low-code tools, design, and teaching.',
@@ -37,8 +36,61 @@ const personJsonLd = {
       'AEO',
       'Content marketing',
     ],
-    sameAs: ['https://www.linkedin.com/in/low-code-ai-automation-dahiana-porto/'],
   },
+  es: {
+    jobTitle: 'Constructora low-code y de IA',
+    description:
+      'Constructora low-code y de IA. Empezó en marketing, llegó a un puesto de CMO, y pasó a construir productos con herramientas low-code, diseño y enseñanza.',
+    knowsAbout: [
+      'Bubble',
+      'Webflow',
+      'WordPress',
+      'Framer',
+      'n8n',
+      'Workflows agénticos de IA',
+      'SEO',
+      'AEO',
+      'Marketing de contenido',
+    ],
+  },
+}[lang];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': 'https://dahiana.work/#website',
+      url: 'https://dahiana.work',
+      name: 'Dahiana Porto',
+      inLanguage: lang,
+    },
+    {
+      '@type': 'ProfilePage',
+      '@id': `${canonicalURL}#profile`,
+      dateModified: new Date().toISOString(),
+      inLanguage: lang,
+      mainEntity: { '@id': personById },
+    },
+    {
+      '@type': 'Person',
+      '@id': personById,
+      name: 'Dahiana Porto',
+      url: 'https://dahiana.work',
+      email: 'mailto:hello@dahiana.work',
+      jobTitle: personCopy.jobTitle,
+      description: personCopy.description,
+      knowsAbout: personCopy.knowsAbout,
+      sameAs: ['https://www.linkedin.com/in/low-code-ai-automation-dahiana-porto/'],
+    },
+    ...(projects ?? []).map((project) => ({
+      '@type': 'CreativeWork',
+      name: project.org,
+      url: project.url,
+      description: project.description,
+      creator: { '@id': personById },
+    })),
+  ],
 };
 ---
 
@@ -48,6 +100,7 @@ const personJsonLd = {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="canonical" href={canonicalURL} />
     <link rel="alternate" hreflang={lang} href={canonicalURL} />
     <link rel="alternate" hreflang={altLang} href={new URL(altPath, Astro.site)} />
@@ -57,18 +110,21 @@ const personJsonLd = {
     <meta name="description" content={description} />
 
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Dahiana Porto" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:image" content={ogImageURL} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content={ogLocale} />
+    <meta property="og:locale:alternate" content={ogLocaleAlternate} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageURL} />
 
-    <script type="application/ld+json" set:html={JSON.stringify(personJsonLd)} is:inline />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to main content</a>
@@ -110,6 +166,12 @@ const personJsonLd = {
 </script>
 
 <style>
+  :global(*),
+  :global(*::before),
+  :global(*::after) {
+    box-sizing: border-box;
+  }
+
   :global(html) {
     background: var(--color-surface-base);
     background-image: linear-gradient(var(--grid-line-color) 1px, transparent 1px),
