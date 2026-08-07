@@ -20,7 +20,18 @@ function domainFor(url: string): string {
 <section class="work" id="work" aria-labelledby="work-heading" data-reveal>
   <h2 id="work-heading" class="section-heading reveal-item">{heading}</h2>
 
-  <div class="carousel reveal-item" data-carousel role="group" aria-label={heading} tabindex="0">
+  <p id="carousel-instructions" class="visually-hidden">
+    Use the arrow keys, dots, or previous/next buttons to bring a project to the front, then activate it again to open the live site in a new tab.
+  </p>
+
+  <div
+    class="carousel reveal-item"
+    data-carousel
+    role="group"
+    aria-label={heading}
+    aria-describedby="carousel-instructions"
+    tabindex="0"
+  >
     <div class="stack">
       {
         projects.map((project, i) => (
@@ -31,6 +42,8 @@ function domainFor(url: string): string {
             data-index={i}
             data-org={project.org}
             data-description={project.description}
+            data-alt={project.imageAlt}
+            aria-label={i === 0 ? `${project.imageAlt} — opens in a new tab` : `${project.imageAlt} — select to bring to front`}
             href={project.url}
             target="_blank"
             rel="noopener noreferrer nofollow"
@@ -45,7 +58,7 @@ function domainFor(url: string): string {
               <span class="card-viewport">
                 <Image
                   src={projectImages[`../images/${project.image}`].default}
-                  alt={project.imageAlt}
+                  alt=""
                   width={1000}
                   height={511}
                   loading="lazy"
@@ -100,6 +113,11 @@ function domainFor(url: string): string {
         card.style.setProperty('--diff', String(clampedDiff));
         card.style.zIndex = String(cards.length - Math.abs(diff));
         card.classList.toggle('is-active', i === activeIndex);
+        const alt = card.dataset.alt ?? '';
+        card.setAttribute(
+          'aria-label',
+          i === activeIndex ? `${alt} — opens in a new tab` : `${alt} — select to bring to front`,
+        );
       });
 
       dots.forEach((dot, i) => {
@@ -150,6 +168,15 @@ function domainFor(url: string): string {
 </script>
 
 <style>
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
   .work {
     padding: 0 var(--space-3) var(--space-8);
     max-width: 64rem;
@@ -245,6 +272,7 @@ function domainFor(url: string): string {
     transform: translateX(-120%);
     opacity: 0;
     pointer-events: none;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
   }
 
   .card.is-active:hover .card-face::after {
@@ -356,8 +384,8 @@ function domainFor(url: string): string {
   }
 
   .dot {
-    width: 1.75rem;
-    height: 1.75rem;
+    width: 2.75rem;
+    height: 2.75rem;
     display: inline-flex;
     align-items: center;
     justify-content: center;

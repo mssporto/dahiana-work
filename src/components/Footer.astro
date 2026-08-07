@@ -67,7 +67,7 @@ const { ctaText, ctaEmail, copyLabel, copiedLabel } = Astro.props;
 <style>
   .footer {
     background: var(--color-surface-footer);
-    padding: var(--space-12) var(--space-3);
+    padding: clamp(var(--space-12), 14vw, var(--space-16)) var(--space-3);
     scroll-margin-top: 5rem;
   }
 
@@ -78,22 +78,23 @@ const { ctaText, ctaEmail, copyLabel, copiedLabel } = Astro.props;
   }
 
   .cta-text {
-    font-size: clamp(1.25rem, 1.5vw + 1rem, 1.75rem);
+    font-size: clamp(1.375rem, 2vw + 1rem, 2rem);
     font-weight: 500;
     line-height: 1.4;
     color: var(--color-text-on-footer);
-    margin: 0 0 var(--space-6);
+    margin: 0 0 var(--space-8);
   }
 
   .contact-row {
     display: inline-flex;
     align-items: center;
-    gap: var(--space-2);
+    gap: var(--space-1);
   }
 
   .email-cta {
     display: inline-flex;
     align-items: center;
+    min-height: 2.75rem;
     gap: var(--space-2);
     text-decoration: none;
     transition: transform 0.15s ease, opacity 0.15s ease;
@@ -116,7 +117,7 @@ const { ctaText, ctaEmail, copyLabel, copiedLabel } = Astro.props;
 
   .envelope {
     display: inline-block;
-    width: clamp(1.75rem, 2.5vw + 1rem, 2.75rem);
+    width: clamp(2rem, 3vw + 1rem, 3.25rem);
     transform-origin: 50% 60%;
     animation: envelope-idle 3.6s ease-in-out infinite;
     filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.45));
@@ -153,7 +154,7 @@ const { ctaText, ctaEmail, copyLabel, copiedLabel } = Astro.props;
 
   .email-link {
     font-family: var(--font-mono);
-    font-size: var(--font-size-body);
+    font-size: clamp(1.125rem, 1.2vw + 0.9rem, 1.5rem);
     font-weight: 700;
     color: var(--color-text-on-footer);
     text-decoration: underline;

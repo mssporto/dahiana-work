@@ -44,9 +44,9 @@ export interface PageContent {
 
 export const en: PageContent = {
   lang: 'en',
-  title: 'Dahiana Porto — Low-code & AI builder',
+  title: 'Dahiana Porto — low-code and AI Product Builder',
   description:
-    "Dahiana Porto is a low-code and AI builder. Products, automations, and SEO/AEO for Minimum, Inusual, Noctorial, KeepCoding, Divino Hotels, and Fortnight.Studio.",
+    "Dahiana Porto is a low-code and AI product builder. Products, automations, and SEO/AEO for Minimum, Inusual, Noctorial, KeepCoding, Divino Hotels, and Fortnight.Studio.",
   greeting: "Hey, I'm Dahiana Porto",
   nav: {
     about: 'About',
@@ -56,11 +56,11 @@ export const en: PageContent = {
   },
   about: [
     {
-      text: "I'm a low-code and AI builder. I started out in marketing and grew into a CMO role, where I explored every facet of the field. Over time, I realized I didn't just want to promote products. I wanted to build them.",
-      highlight: "I'm a low-code and AI builder.",
+      text: "I'm a low-code and AI Product Builder. I started out in marketing and grew into a CMO role, where I explored every facet of the field. Over time, I realized I didn't just want to promote products. I wanted to build them.",
+      highlight: "I'm a low-code and AI Product Builder.",
     },
     {
-      text: "So for the past four years, I've been developing products using Low-Code, AI and Automation — Bubble, Webflow, WordPress, Framer, and n8n — while also diving into design, SEO/AEO strategy, and doing some teaching along the way.",
+      text: "So for the past years, I've been developing products using Low-Code, AI and Automation as well as No-Code tools like Bubble, Webflow, WordPress, Framer, and n8n, while also diving into design, SEO/AEO strategy, and doing some teaching along the way.",
       highlight: 'Low-Code, AI and Automation',
     },
   ],
@@ -141,9 +141,9 @@ export const en: PageContent = {
 
 export const es: PageContent = {
   lang: 'es',
-  title: 'Dahiana Porto — Constructora low-code y de IA',
+  title: 'Dahiana Porto — low-code and AI Product Builder',
   description:
-    'Dahiana Porto es constructora low-code y de IA. Productos, automatizaciones y SEO/AEO para Minimum, Inusual, Noctorial, KeepCoding, Divino Hotels y Fortnight.Studio.',
+    'Dahiana Porto es low-code and AI Product Builder. Productos, automatizaciones y SEO/AEO para Minimum, Inusual, Noctorial, KeepCoding, Divino Hotels y Fortnight.Studio.',
   greeting: 'Hola, soy Dahiana Porto',
   nav: {
     about: 'Sobre mí',
@@ -153,12 +153,12 @@ export const es: PageContent = {
   },
   about: [
     {
-      text: 'Soy constructora low-code y de IA. Empecé en marketing y crecí hasta un rol de CMO, donde exploré cada faceta del área. Con el tiempo, me di cuenta de que no solo quería promocionar productos: quería construirlos.',
-      highlight: 'Soy constructora low-code y de IA.',
+      text: 'Soy low-code and AI Product Builder. Empecé en marketing y acabé en un puesto de CMO, donde exploré cada faceta del sector. Con el tiempo me di cuenta de que no quería solo promocionar productos, sino construirlos.',
+      highlight: 'Soy low-code and AI Product Builder',
     },
     {
-      text: 'Así que durante los últimos cuatro años he estado desarrollando productos con Low-Code, IA y Automatización — Bubble, Webflow, WordPress, Framer y n8n — mientras profundizaba en diseño, estrategia SEO/AEO, y enseñaba en el camino.',
-      highlight: 'Low-Code, IA y Automatización',
+      text: 'Así que en los últimos años he estado desarrollando productos con low-code, ia y automatización, además de herramientas no-code como Bubble, Webflow, WordPress, Framer y n8n, mientras profundizaba en diseño, estrategia seo/aeo y daba alguna clase por el camino.',
+      highlight: 'low-code, ia y automatización',
     },
   ],
   projectsHeading: 'Algunos de los clientes con los que he trabajado',
@@ -192,7 +192,7 @@ export const es: PageContent = {
       url: 'https://keepcoding.io/',
       description: 'Fui CMO y di clases en un bootcamp de marketing digital.',
       image: 'keepcoding.io.png',
-      imageAlt: 'Página de inicio de KeepCoding, un bootcamp de marketing digital donde Dahiana fue CMO',
+      imageAlt: 'Página de inicio de KeepCoding, donde Dahiana fue CMO',
     },
     {
       org: 'Divino Hotels',
@@ -204,9 +204,9 @@ export const es: PageContent = {
     {
       org: 'Fortnight.Studio',
       url: 'https://www.fortnight.studio/',
-      description: 'Desarrollé workflows agénticos, AEO y soluciones de automatización.',
+      description: 'Creé agentic workflows y automatizaciones.',
       image: 'www.fortnight.studio.png',
-      imageAlt: 'Página de inicio de Fortnight.Studio, donde Dahiana desarrolló workflows agénticos de AEO y automatización',
+      imageAlt: 'Página de inicio de Fortnight.Studio, donde Dahiana desarrolló agentic workflows y automatizaciones',
     },
   ],
   servicesHeading: 'En qué puedo ayudarte',
