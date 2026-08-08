@@ -44,7 +44,7 @@ export interface PageContent {
 
 export const en: PageContent = {
   lang: 'en',
-  title: 'Dahiana Porto — low-code and AI Product Builder',
+  title: 'Dahiana Porto | Low-code and AI Product Builder',
   description:
     "Dahiana Porto is a low-code and AI product builder. Products, automations, and SEO/AEO for Minimum, Inusual, Noctorial, KeepCoding, Divino Hotels, and Fortnight.Studio.",
   greeting: "Hey, I'm Dahiana Porto",
@@ -100,14 +100,14 @@ export const en: PageContent = {
     {
       org: 'Divino Hotels',
       url: 'https://www.gghostel.com/',
-      description: 'Built websites for the entire portfolio, including GG Hostel and Casa Lolita.',
+      description: 'Built Webflow websites for their portfolio, using Client First approach, including GG Hostel and Casa Lolita.',
       image: 'divino-hotels.png',
       imageAlt: 'Divino Hotels portfolio website, including GG Hostel and Casa Lolita, built by Dahiana',
     },
     {
       org: 'Fortnight.Studio',
       url: 'https://www.fortnight.studio/',
-      description: 'Developed agentic workflows, AEO, and automation solutions.',
+      description: 'Developed agentic workflows and automation solutions on content generation, document organization.',
       image: 'www.fortnight.studio.png',
       imageAlt: 'Fortnight.Studio website homepage, where Dahiana developed agentic AEO and automation workflows',
     },
@@ -116,7 +116,7 @@ export const en: PageContent = {
   services: [
     {
       text: 'Building apps and MVPs with Bubble — from a first prototype to a working product.',
-      tags: ['MVP', 'WEB APPS', 'LOW-CODE AI BUILDER'],
+      tags: ['BUBBLE','MVP', 'WEB APPS', 'LOW-CODE AI BUILDER'],
     },
     {
       text: 'Creating websites and landing pages with Webflow, WordPress, or Framer.',
@@ -141,7 +141,7 @@ export const en: PageContent = {
 
 export const es: PageContent = {
   lang: 'es',
-  title: 'Dahiana Porto — low-code and AI Product Builder',
+  title: 'Dahiana Porto | Low-code and AI Product Builder',
   description:
     'Dahiana Porto es low-code and AI Product Builder. Productos, automatizaciones y SEO/AEO para Minimum, Inusual, Noctorial, KeepCoding, Divino Hotels y Fortnight.Studio.',
   greeting: 'Hola, soy Dahiana Porto',
@@ -153,12 +153,12 @@ export const es: PageContent = {
   },
   about: [
     {
-      text: 'Soy low-code and AI Product Builder. Empecé en marketing y acabé en un puesto de CMO, donde exploré cada faceta del sector. Con el tiempo me di cuenta de que no quería solo promocionar productos, sino construirlos.',
-      highlight: 'Soy low-code and AI Product Builder',
+      text: 'Low-code and AI Product Builder. Empecé en marketing y acabé en un puesto de CMO, donde exploré cada faceta del sector. Con el tiempo me di cuenta de que no quería solo promocionar productos, sino construirlos.',
+      highlight: 'Low-code and AI Product Builder',
     },
     {
       text: 'Así que en los últimos años he estado desarrollando productos con low-code, ia y automatización, además de herramientas no-code como Bubble, Webflow, WordPress, Framer y n8n, mientras profundizaba en diseño, estrategia seo/aeo y daba alguna clase por el camino.',
-      highlight: 'low-code, ia y automatizaciones',
+      highlight: 'low-code, ia y automatización',
     },
   ],
   projectsHeading: 'Algunos de los clientes con los que he trabajado',
@@ -213,7 +213,7 @@ export const es: PageContent = {
   services: [
     {
       text: 'Construir apps y MVPs con Bubble — desde un primer prototipo hasta un producto funcional.',
-      tags: ['MVP', 'AI PRODUCT BUILDER'],
+      tags: ['BUBBLE','MVP', 'WEB APPS', 'LOW-CODE AI BUILDER'],
     },
     {
       text: 'Crear páginas web y landing pages con Webflow, WordPress o Framer.',
