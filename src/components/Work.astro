@@ -347,6 +347,7 @@ function domainFor(url: string): string {
     display: flex;
     align-items: center;
     gap: var(--space-2);
+    max-width: 100%;
   }
 
   .control-btn {
@@ -358,6 +359,7 @@ function domainFor(url: string): string {
     border-radius: 2px;
     min-width: 2.75rem;
     min-height: 2.75rem;
+    flex-shrink: 0;
     cursor: pointer;
     transition: background-color 0.15s ease, color 0.15s ease, transform 0.15s cubic-bezier(0.16, 1, 0.3, 1);
   }
@@ -381,11 +383,22 @@ function domainFor(url: string): string {
   .dots {
     display: flex;
     gap: var(--space-1);
+    min-width: 0;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .dots::-webkit-scrollbar {
+    display: none;
   }
 
   .dot {
     width: 2.75rem;
     height: 2.75rem;
+    flex-shrink: 0;
+    scroll-snap-align: center;
     display: inline-flex;
     align-items: center;
     justify-content: center;
