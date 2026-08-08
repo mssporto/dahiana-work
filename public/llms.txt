@@ -8,12 +8,12 @@ Dahiana Porto is a low-code and AI Product Builder. She started in marketing, be
 
 ## Selected work
 
-- Built foundational product work for Yonder and The Village at Minimum, one of the best development studios in the world.
-- Created style guides, site structure, landing pages, and SEO from scratch for Inusual.
-- Improved the Bubble app, documentation, and website for Noctorial.
-- Served as CMO and taught digital marketing classes at KeepCoding.
-- Built websites with Webflow using Client First Framework for the Divino Hotels portfolio, including GG Hostel and Casa Lolita.
-- Developed agentic workflows, AEO, and automation solutions for Fortnight.Studio.
+- Built foundational product work for Yonder and The Village at [Minimum](https://www.minimum.studio/), one of the best development studios in the world.
+- Created style guides, site structure, landing pages, and SEO from scratch for [Inusual](https://www.inusual.com/).
+- Improved the Bubble app, documentation, and website for [Noctorial](https://noctorial.com/).
+- Served as CMO and taught digital marketing classes at [KeepCoding](https://keepcoding.io/).
+- Built websites with Webflow using Client First Framework for the Divino Hotels portfolio, including [GG Hostel](https://www.gghostel.com/) and Casa Lolita.
+- Developed agentic workflows, AEO, and automation solutions for [Fortnight.Studio](https://www.fortnight.studio/).
 
 ## What she can help with
 
@@ -24,5 +24,5 @@ Dahiana Porto is a low-code and AI Product Builder. She started in marketing, be
 
 ## Contact
 
-- Email: hello@dahiana.work
-- Site: https://dahiana.work
+- Email: [hello@dahiana.work](mailto:hello@dahiana.work)
+- Site: [https://dahiana.work](https://dahiana.work)

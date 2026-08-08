@@ -158,11 +158,11 @@ const jsonLd = {
     sections.forEach((section) => observer.observe(section));
   }
 
-  console.log(
-    '%cPoking around the code?%c\nThe status line up there is updated by hand, not a cron job. hello@dahiana.work',
-    'color:#f63d18;font-weight:700;',
-    'color:inherit;font-weight:400;',
-  );
+  const consoleGreeting = document.documentElement.lang === 'es'
+    ? '%c¡Hola :)%c\n¿Algo llamó tu atención? Si encontraste un error o algo que no debería estar ahí, escríbeme a hello@dahiana.work. ¡Gracias!'
+    : "%cHello, stranger!%c\nSomething caught your attention? If you found a bug or something that shouldn't be there, email me at hello@dahiana.work. Thank you :)";
+
+  console.log(consoleGreeting, 'color:#f63d18;font-weight:700;', 'color:inherit;font-weight:400;');
 </script>
 
 <style>
