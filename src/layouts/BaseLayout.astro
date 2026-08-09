@@ -162,7 +162,8 @@ const jsonLd = {
     ? '%c¡Hola :)%c\n¿Algo llamó tu atención? Si encontraste un error o algo que no debería estar ahí, escríbeme a hello@dahiana.work. ¡Gracias!'
     : "%cHello, stranger!%c\nSomething caught your attention? If you found a bug or something that shouldn't be there, email me at hello@dahiana.work. Thank you :)";
 
-  console.log(consoleGreeting, 'color:#f63d18;font-weight:700;', 'color:inherit;font-weight:400;');
+  // console.log %c styling can't read CSS custom properties — keep this hex in sync with --color-text-accent in tokens.css
+  console.log(consoleGreeting, 'color:#1d4ed8;font-weight:700;', 'color:inherit;font-weight:400;');
 </script>
 
 <style>
@@ -191,7 +192,7 @@ const jsonLd = {
     left: -9999px;
     top: 0;
     background: var(--color-text-accent);
-    color: var(--color-text-primary);
+    color: var(--color-text-on-footer);
     padding: var(--space-1) var(--space-2);
     z-index: 20;
   }

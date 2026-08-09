@@ -56,12 +56,20 @@ export const en: PageContent = {
   },
   about: [
     {
-      text: "I'm a low-code and AI Product Builder. I started out in marketing and grew into a CMO role, where I explored every facet of the field. Over time, I realized I didn't just want to promote products. I wanted to build them.",
+      text: "I'm a low-code and AI Product Builder. I used to work in marketing. At some point I realised I didn't just want to promote products, I wanted to build them. So I moved into no/low-code development, bringing along everything my time as a CMO taught me about strategy, customer journey, and running projects and teams.",
       highlight: "I'm a low-code and AI Product Builder.",
     },
     {
-      text: "So for the past years, I've been developing products using Low-Code, AI and Automation as well as No-Code tools like Bubble, Webflow, WordPress, Framer, and n8n, while also diving into design, SEO/AEO strategy, and doing some teaching along the way.",
-      highlight: 'Low-Code, AI and Automation',
+      text: "That's what I've been doing for the last few years: building digital products of all kinds with Bubble, Webflow, WordPress, Supabase and automations with AI and n8n.",
+      highlight: '',
+    },
+    {
+      text: "I also know my way around design, SEO/AEO, and I've done a fair bit of teaching.",
+      highlight: '',
+    },
+    {
+      text: "So if you need a low-code product developer who thinks about the business side too, I'm your person.",
+      highlight: '',
     },
   ],
   projectsHeading: 'Some of the clients I’ve worked with',
@@ -93,7 +101,7 @@ export const en: PageContent = {
     {
       org: 'KeepCoding',
       url: 'https://keepcoding.io/',
-      description: 'Served as CMO and taught classes for a digital marketing bootcamp.',
+      description: 'Worked as CMO. Also, created a digital marketing bootcamp and taught classes in it.',
       image: 'keepcoding.io.png',
       imageAlt: 'KeepCoding website homepage, a digital marketing bootcamp where Dahiana served as CMO',
     },
@@ -141,9 +149,11 @@ export const en: PageContent = {
 
 export const es: PageContent = {
   lang: 'es',
-  title: 'Dahiana Porto | Low-code and AI Product Builder',
+  title: 'Dahiana Porto | Low-code y AI Product Builder',
+  // description intentionally stays close to the English version (brand terms like
+  // "low-code" and "AI" read the same in both languages) — not an untranslated leftover.
   description:
-    'Dahiana Porto es low-code and AI Product Builder. Productos, automatizaciones y SEO/AEO para Minimum, Inusual, Noctorial, KeepCoding, Divino Hotels y Fortnight.Studio.',
+    'Dahiana Porto es constructora low-code y de IA. Productos, automatizaciones y SEO/AEO para Minimum, Inusual, Noctorial, KeepCoding, Divino Hotels y Fortnight.Studio.',
   greeting: 'Hola, soy Dahiana Porto',
   nav: {
     about: 'Sobre mí',
@@ -153,12 +163,20 @@ export const es: PageContent = {
   },
   about: [
     {
-      text: 'Low-code and AI Product Builder. Empecé en marketing y acabé en un puesto de CMO, donde exploré cada faceta del sector. Con el tiempo me di cuenta de que no quería solo promocionar productos, sino construirlos.',
-      highlight: 'Low-code and AI Product Builder',
+      text: 'Low-code y AI Product Builder. Antes me dedicaba al marketing. Un día me di cuenta de que no quería solo promocionar productos. Quería construirlos. Así me convertí en desarrolladora no-code y low-code.',
+      highlight: 'Low-code y AI Product Builder',
     },
     {
-      text: 'Así que en los últimos años he estado desarrollando productos con low-code, ia y automatización, además de herramientas no-code como Bubble, Webflow, WordPress, Framer y n8n, mientras profundizaba en diseño, estrategia seo/aeo y daba alguna clase por el camino.',
-      highlight: 'low-code, ia y automatización',
+      text: 'A eso llevo dedicándome estos últimos años: a construir productos digitales de todo tipo con Bubble, Webflow, WordPress, Framer y n8n, aplicando además todo lo que había aprendido en mi rol anterior como CMO: estrategia, customer journey, sacar proyectos adelante y llevar equipos.',
+      highlight: '',
+    },
+    {
+      text: 'Y por el camino también me he ido metiendo en diseño y en SEO/AEO, y he dado unas cuantas clases.',
+      highlight: '',
+    },
+    {
+      text: 'Si buscas a alguien que tenga el conocimiento técnico y la visión de negocio para construir productos digitales, cuenta conmigo.',
+      highlight: '',
     },
   ],
   projectsHeading: 'Algunos de los clientes con los que he trabajado',
@@ -167,7 +185,7 @@ export const es: PageContent = {
       org: 'Minimum',
       url: 'https://www.minimum.studio/',
       description:
-        'Trabajé para uno de los mejores estudios de desarrollo del mundo y construí las bases de Yonder y The Village.',
+        'Trabajé con uno de los mejores estudios de desarrollo del mundo y construí las bases de Yonder y The Village.',
       image: 'www.minimum.studio.png',
       imageAlt: 'Página de inicio de Minimum Studio, un estudio de desarrollo cuyas bases ayudó a construir Dahiana',
     },
@@ -190,7 +208,7 @@ export const es: PageContent = {
     {
       org: 'KeepCoding',
       url: 'https://keepcoding.io/',
-      description: 'Fui CMO y di clases en un bootcamp de marketing digital.',
+      description: 'Fui CMO. Creé un bootcamp de marketing digital desde cero e impartí clases en él.',
       image: 'keepcoding.io.png',
       imageAlt: 'Página de inicio de KeepCoding, un bootcamp de marketing digital donde Dahiana fue CMO',
     },
@@ -212,7 +230,7 @@ export const es: PageContent = {
   servicesHeading: 'En qué puedo ayudarte',
   services: [
     {
-      text: 'Construir apps y MVPs con Bubble — desde un primer prototipo hasta un producto funcional.',
+      text: 'Construir apps y MVPs con Bubble, desde un primer prototipo hasta un producto funcional.',
       tags: ['BUBBLE','MVP', 'WEB APPS', 'LOW-CODE AI BUILDER'],
     },
     {
@@ -228,7 +246,7 @@ export const es: PageContent = {
       tags: ['ESTRATEGIA SEO', 'OPTIMIZACIÓN AEO', 'MARKETING DE CONTENIDO'],
     },
   ],
-  ctaText: 'Ya sea que estés empezando algo nuevo o mejorando lo que ya tienes, hablemos.',
+  ctaText: 'Tanto si estás empezando algo nuevo como si quieres mejorar lo que ya tienes, hablemos.',
   ctaEmail: 'hello@dahiana.work',
   copyLabel: 'Copiar dirección de email',
   copiedLabel: '¡Copiado!',

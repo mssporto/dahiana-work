@@ -15,17 +15,20 @@ Minimal, text-first, cream. Restraint comes from **one font, one accent color** 
 | `color-text-primary` | `#131410` | Body/heading text on the cream body | ~16:1 contrast on `#f1efea` — excellent. |
 | `color-text-muted` | `#4b4b47` | De-emphasized supporting copy (About body, Work row descriptions, nav readout) | ~7.7:1 on `#f1efea` — pinned to a real color, not `opacity` on `color-text-primary`, so contrast can't silently drift if the base palette changes. |
 | `color-text-on-footer` | `#ffffff` | Body/heading text on the dark footer | Pure white as text is fine; the rule is about fills, not glyphs. |
-| `color-text-accent` | `#f63d18` | Accent — fills and large type only | Hot orange-red. See usage rule below. |
-| `color-status-live` | `#1a7a4c` | Nav live-status dot only | Muted technical green — signals "available," distinct from the orange accent so status and interactive/brand-accent meanings never collide. ~4.6:1 on `#f1efea`. |
+| `color-text-accent` | `#1d4ed8` | Accent — fills, large type, and small text on the cream body | Royal blue. See usage rule below. |
+| `color-text-accent-on-dark` | `#6d94ff` | Accent text sitting directly on the dark footer band only | Lighter blue tint — the base accent doesn't clear AA against the near-black footer, so this variant exists for that one context. |
+| `color-status-live` | `#1a7a4c` | Nav live-status dot only | Muted technical green — signals "available," distinct from the blue accent so status and interactive/brand-accent meanings never collide. ~4.6:1 on `#f1efea`. |
 
-**Accent usage rule:** `#f63d18` computes to ~3.3:1 against the cream body — passes AA for large text (≥24px) and non-text UI, fails AA for small text. Accent is therefore used **only** as: a fill (buttons, the footer contact CTA on hover, hover-fill on nav links) with near-black or white text on top, or as large display type ≥24px enforced by an explicit `font-size` floor, not left to a paragraph's own responsive clamp (the About section's `.accent-highlight` inherited its parent paragraph's clamp and dipped to ~19.75px at narrow viewports — still technically WCAG-compliant at that size, but under this file's own ≥24px bar; it now sets its own `clamp(1.5rem, 1vw + 1.3rem, 1.75rem)` floor). Never as small text or inline links sitting directly on the cream. Small inline links on cream use `color-text-primary` instead. The nav's live-status dot uses `color-status-live`, not the accent — status color and brand-accent color are kept semantically separate.
+**Accent usage rule:** `#1d4ed8` computes to ~5.8:1 against the cream body — passes AA at any text size on the cream, so `.about-copy` and `.accent-highlight` in About.astro share one ordinary body-copy clamp with no explicit large-type floor. As a fill (buttons, the footer contact CTA hover, hover-fill on nav links, Work carousel controls, Services tags), text on top must be white (`color-text-on-footer`), not near-black — near-black on this blue drops to ~2.8:1 and fails. The one exception is the dark footer band: `#1d4ed8` text directly on `#0a0a08` only reaches ~3.0:1 (fails AA), so those two spots (`.copy-btn:hover`, `.icon-check` in Footer.astro) use `color-text-accent-on-dark` instead. Small inline links on cream use `color-text-primary`, not the accent. The nav's live-status dot uses `color-status-live`, not the accent — status color and brand-accent color are kept semantically separate.
 
 Contrast check (WCAG AA):
 - `#131410` on `#f1efea` → ~16:1 ✅ (body text)
 - `#ffffff` on `#0a0a08` → ~19.5:1 ✅ (footer body text)
-- `#f63d18` on `#f1efea` → ~3.3:1 — fails small-text AA, passes large-text/non-text AA (3:1). Fills/large-type only.
+- `#1d4ed8` on `#f1efea` → ~5.8:1 ✅ (accent text/large type on cream, any size)
+- `#ffffff` on `#1d4ed8` (accent fill + white text) → ~6.7:1 ✅
+- `#1d4ed8` on `#0a0a08` → ~3.0:1 — fails AA text contrast on the dark footer; use `color-text-accent-on-dark` there instead.
+- `#6d94ff` on `#0a0a08` → ~9.7:1 ✅ (footer-only accent text)
 - `#1a7a4c` on `#f1efea` → ~4.6:1 ✅ (status dot, non-text UI)
-- `#131410` on `#f63d18` (accent fill + near-black text) → check at build time and confirm ≥4.5:1 before shipping any filled button.
 
 ## Typography
 
