@@ -149,9 +149,11 @@ export const en: PageContent = {
 
 export const es: PageContent = {
   lang: 'es',
-  title: 'Dahiana Porto | Low-code and AI Product Builder',
+  title: 'Dahiana Porto | Low-code y AI Product Builder',
+  // description intentionally stays close to the English version (brand terms like
+  // "low-code" and "AI" read the same in both languages) — not an untranslated leftover.
   description:
-    'Dahiana Porto es low-code and AI Product Builder. Productos, automatizaciones y SEO/AEO para Minimum, Inusual, Noctorial, KeepCoding, Divino Hotels y Fortnight.Studio.',
+    'Dahiana Porto es constructora low-code y de IA. Productos, automatizaciones y SEO/AEO para Minimum, Inusual, Noctorial, KeepCoding, Divino Hotels y Fortnight.Studio.',
   greeting: 'Hola, soy Dahiana Porto',
   nav: {
     about: 'Sobre mí',
@@ -161,8 +163,8 @@ export const es: PageContent = {
   },
   about: [
     {
-      text: 'Low-code and AI Product Builder. Antes me dedicaba al marketing. Un día me di cuenta de que no quería solo promocionar productos. Quería construirlos. Así me convertí en desarrolladora no-code y low-code.',
-      highlight: 'Low-code and AI Product Builder',
+      text: 'Low-code y AI Product Builder. Antes me dedicaba al marketing. Un día me di cuenta de que no quería solo promocionar productos. Quería construirlos. Así me convertí en desarrolladora no-code y low-code.',
+      highlight: 'Low-code y AI Product Builder',
     },
     {
       text: 'A eso llevo dedicándome estos últimos años: a construir productos digitales de todo tipo con Bubble, Webflow, WordPress, Framer y n8n, aplicando además todo lo que había aprendido en mi rol anterior como CMO: estrategia, customer journey, sacar proyectos adelante y llevar equipos.',
