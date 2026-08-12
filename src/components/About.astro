@@ -6,30 +6,61 @@ interface Props {
 }
 const { about } = Astro.props;
 
-function splitOnHighlight({ text, highlight }: AboutParagraph) {
-  const index = text.indexOf(highlight);
-  if (index === -1) return { before: text, highlight: '', after: '' };
-  return {
-    before: text.slice(0, index),
-    highlight,
-    after: text.slice(index + highlight.length),
-  };
+type Segment =
+  | { kind: 'text'; text: string }
+  | { kind: 'highlight'; text: string }
+  | { kind: 'link'; text: string; href: string; label: string };
+
+function toSegments({ text, highlight, links = [] }: AboutParagraph): Segment[] {
+  const matches: { start: number; end: number; kind: 'highlight' | 'link'; href?: string; label?: string }[] = [];
+
+  if (highlight) {
+    const index = text.indexOf(highlight);
+    if (index !== -1) matches.push({ start: index, end: index + highlight.length, kind: 'highlight' });
+  }
+  for (const link of links) {
+    const index = text.indexOf(link.anchor);
+    if (index !== -1) {
+      matches.push({ start: index, end: index + link.anchor.length, kind: 'link', href: link.href, label: link.label });
+    }
+  }
+  matches.sort((a, b) => a.start - b.start);
+
+  const segments: Segment[] = [];
+  let cursor = 0;
+  for (const match of matches) {
+    if (match.start > cursor) segments.push({ kind: 'text', text: text.slice(cursor, match.start) });
+    const matchText = text.slice(match.start, match.end);
+    segments.push(
+      match.kind === 'highlight'
+        ? { kind: 'highlight', text: matchText }
+        : { kind: 'link', text: matchText, href: match.href!, label: match.label! }
+    );
+    cursor = match.end;
+  }
+  if (cursor < text.length) segments.push({ kind: 'text', text: text.slice(cursor) });
+
+  return segments;
 }
 ---
 
 <section class="about" id="about" aria-labelledby="about-heading" data-reveal>
   <h2 id="about-heading" class="visually-hidden">About</h2>
   {
-    about.map((paragraph) => {
-      const { before, highlight, after } = splitOnHighlight(paragraph);
-      return (
-        <p class="about-copy reveal-item">
-          {before}
-          {highlight && <span class="accent-highlight">{highlight}</span>}
-          {after}
-        </p>
-      );
-    })
+    about.map((paragraph) => (
+      <p class="about-copy reveal-item">
+        {toSegments(paragraph).map((segment) => {
+          if (segment.kind === 'highlight') return <span class="accent-highlight">{segment.text}</span>;
+          if (segment.kind === 'link')
+            return (
+              <a class="inline-link" href={segment.href} target="_blank" rel="noopener noreferrer" aria-label={segment.label}>
+                {segment.text}
+              </a>
+            );
+          return segment.text;
+        })}
+      </p>
+    ))
   }
 </section>
 
@@ -53,6 +84,25 @@ function splitOnHighlight({ text, highlight }: AboutParagraph) {
   .accent-highlight {
     color: var(--color-text-accent);
     font-weight: 700;
+  }
+
+  .inline-link {
+    color: var(--color-text-primary);
+    text-decoration: underline;
+    text-decoration-color: currentColor;
+    text-underline-offset: 0.2em;
+    transition: color 0.15s ease;
+  }
+
+  .inline-link:hover,
+  .inline-link:focus-visible {
+    color: var(--color-text-accent);
+  }
+
+  .inline-link:focus-visible {
+    outline: 2px solid var(--color-text-accent);
+    outline-offset: 2px;
+    border-radius: 1px;
   }
 
   .visually-hidden {

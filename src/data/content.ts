@@ -6,9 +6,16 @@ export interface Project {
   imageAlt: string;
 }
 
+export interface AboutLink {
+  anchor: string;
+  href: string;
+  label: string;
+}
+
 export interface AboutParagraph {
   text: string;
   highlight: string;
+  links?: AboutLink[];
 }
 
 export interface Service {
@@ -58,10 +65,24 @@ export const en: PageContent = {
     {
       text: "I'm a low-code and AI Product Builder. I used to work in marketing. At some point I realised I didn't just want to promote products, I wanted to build them. So I moved into no/low-code development, bringing along everything my time as a CMO taught me about strategy, customer journey, and running projects and teams.",
       highlight: "I'm a low-code and AI Product Builder.",
+      links: [
+        {
+          anchor: 'CMO',
+          href: 'https://www.linkedin.com/in/low-code-ai-automation-dahiana-porto/',
+          label: "Dahiana Porto's LinkedIn profile",
+        },
+      ],
     },
     {
       text: "That's what I've been doing for the last few years: building digital products of all kinds with Bubble, Webflow, WordPress, Supabase and automations with AI and n8n.",
       highlight: '',
+      links: [
+        {
+          anchor: 'n8n',
+          href: 'https://n8n.io/creators/mssporto/',
+          label: "Dahiana Porto's n8n creator profile",
+        },
+      ],
     },
     {
       text: "I also know my way around design, SEO/AEO, and I've done a fair bit of teaching.",
@@ -169,6 +190,18 @@ export const es: PageContent = {
     {
       text: 'A eso llevo dedicándome estos últimos años: a construir productos digitales de todo tipo con Bubble, Webflow, WordPress, Framer y n8n, aplicando además todo lo que había aprendido en mi rol anterior como CMO: estrategia, customer journey, sacar proyectos adelante y llevar equipos.',
       highlight: '',
+      links: [
+        {
+          anchor: 'n8n',
+          href: 'https://n8n.io/creators/mssporto/',
+          label: 'Perfil de creadora de Dahiana Porto en n8n',
+        },
+        {
+          anchor: 'CMO',
+          href: 'https://www.linkedin.com/in/low-code-ai-automation-dahiana-porto/',
+          label: 'Perfil de LinkedIn de Dahiana Porto',
+        },
+      ],
     },
     {
       text: 'Y por el camino también me he ido metiendo en diseño y en SEO/AEO, y he dado unas cuantas clases.',
