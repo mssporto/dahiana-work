@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import type { Project } from '../data/content';
+import type { AboutLink, Project } from '../data/content';
 
 interface Props {
   heading: string;
@@ -14,6 +14,41 @@ const projectImages = import.meta.glob<{ default: ImageMetadata }>('../images/*.
 
 function domainFor(url: string): string {
   return new URL(url).hostname.replace(/^www\./, '');
+}
+
+type Segment = { kind: 'text'; text: string } | { kind: 'link'; text: string; href: string; label: string };
+
+function toSegments(description: string, links: AboutLink[] = []): Segment[] {
+  const matches: { start: number; end: number; href: string; label: string }[] = [];
+  for (const link of links) {
+    const index = description.indexOf(link.anchor);
+    if (index !== -1) matches.push({ start: index, end: index + link.anchor.length, href: link.href, label: link.label });
+  }
+  matches.sort((a, b) => a.start - b.start);
+
+  const segments: Segment[] = [];
+  let cursor = 0;
+  for (const match of matches) {
+    if (match.start > cursor) segments.push({ kind: 'text', text: description.slice(cursor, match.start) });
+    segments.push({ kind: 'link', text: description.slice(match.start, match.end), href: match.href, label: match.label });
+    cursor = match.end;
+  }
+  if (cursor < description.length) segments.push({ kind: 'text', text: description.slice(cursor) });
+  return segments;
+}
+
+function escapeHtml(text: string): string {
+  return text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+function descriptionToHtml(project: Project): string {
+  return toSegments(project.description, project.links)
+    .map((segment) =>
+      segment.kind === 'link'
+        ? `<a class="inline-link" href="${segment.href}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(segment.label)}">${escapeHtml(segment.text)}</a>`
+        : escapeHtml(segment.text),
+    )
+    .join('');
 }
 ---
 
@@ -40,7 +75,7 @@ function domainFor(url: string): string {
             class:list={{ 'is-active': i === 0 }}
             data-index={i}
             data-org={project.org}
-            data-description={project.description}
+            data-description-html={descriptionToHtml(project)}
             data-alt={project.imageAlt}
             aria-label={i === 0 ? `${project.imageAlt} — opens in a new tab` : `${project.imageAlt} — select to bring to front`}
             href={project.url}
@@ -70,7 +105,7 @@ function domainFor(url: string): string {
     </div>
 
     <p class="active-info" aria-live="polite">
-      <strong class="active-org">{activeProject.org}</strong> — <span class="active-desc">{activeProject.description}</span>
+      <strong class="active-org">{activeProject.org}</strong> — <span class="active-desc" set:html={descriptionToHtml(activeProject)} />
     </p>
 
     <div class="controls">
@@ -127,7 +162,7 @@ function domainFor(url: string): string {
       const active = cards[activeIndex];
       if (active && activeOrg && activeDesc) {
         activeOrg.textContent = active.dataset.org ?? '';
-        activeDesc.textContent = active.dataset.description ?? '';
+        activeDesc.innerHTML = active.dataset.descriptionHtml ?? '';
       }
     }
 
@@ -341,6 +376,25 @@ function domainFor(url: string): string {
 
   .active-org {
     color: var(--color-text-primary);
+  }
+
+  .active-desc :global(.inline-link) {
+    color: var(--color-text-primary);
+    text-decoration: underline;
+    text-decoration-color: currentColor;
+    text-underline-offset: 0.2em;
+    transition: color 0.15s ease;
+  }
+
+  .active-desc :global(.inline-link:hover),
+  .active-desc :global(.inline-link:focus-visible) {
+    color: var(--color-text-accent);
+  }
+
+  .active-desc :global(.inline-link:focus-visible) {
+    outline: 2px solid var(--color-text-accent);
+    outline-offset: 2px;
+    border-radius: 1px;
   }
 
   .controls {
