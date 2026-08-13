@@ -4,6 +4,7 @@ export interface Project {
   description: string;
   image: string;
   imageAlt: string;
+  links?: AboutLink[];
 }
 
 export interface AboutLink {
@@ -101,6 +102,18 @@ export const en: PageContent = {
       description:
         'Worked for one of the best development studios in the world and built the foundations of Yonder and The Village.',
       image: 'www.minimum.studio.png',
+      links: [
+        {
+          anchor: 'Yonder',
+          href: 'https://www.liveyonder.co/',
+          label: 'Yonder website homepage, a product Dahiana helped build the foundations of',
+        },
+        {
+          anchor: 'The Village',
+          href: 'https://www.thevillagechildren.com/',
+          label: 'The Village website homepage, a product Dahiana helped build the foundations of',
+        },
+      ],
       imageAlt: 'Minimum Studio website homepage, a development studio site Dahiana helped build the foundations of',
     },
     {
@@ -132,6 +145,18 @@ export const en: PageContent = {
       description: 'Built Webflow websites for their portfolio, using Client First approach, including GG Hostel and Casa Lolita.',
       image: 'divino-hotels.png',
       imageAlt: 'Divino Hotels portfolio website, including GG Hostel and Casa Lolita, built by Dahiana',
+      links: [
+        {
+          anchor: 'GG Hostel',
+          href: 'https://www.gghostel.com/',
+          label: 'GG Hostel website homepage, a product Dahiana helped build the foundations of',
+        },
+        {
+          anchor: 'Casa Lolita',
+          href: 'https://www.casalolita.es/',
+          label: 'Casa Lolita website homepage, a product Dahiana helped build the foundations of',
+        },
+      ],
     },
     {
       org: 'Fortnight.Studio',
@@ -220,6 +245,18 @@ export const es: PageContent = {
       description:
         'Trabajé con uno de los mejores estudios de desarrollo del mundo y construí las bases de Yonder y The Village.',
       image: 'www.minimum.studio.png',
+      links: [
+        {
+          anchor: 'Yonder',
+          href: 'https://www.liveyonder.co/',
+          label: 'Página de inicio de Yonder, un producto cuyas bases ayudó a construir Dahiana',
+        },
+        {
+          anchor: 'The Village',
+          href: 'https://www.thevillagechildren.com/',
+          label: 'Página de inicio de The Village, un producto cuyas bases ayudó a construir Dahiana',
+        },
+      ],
       imageAlt: 'Página de inicio de Minimum Studio, un estudio de desarrollo cuyas bases ayudó a construir Dahiana',
     },
     {
@@ -250,6 +287,18 @@ export const es: PageContent = {
       url: 'https://www.gghostel.com/',
       description: 'Construí los sitios web de todo el portfolio, incluyendo GG Hostel y Casa Lolita.',
       image: 'divino-hotels.png',
+      links: [
+        {
+          anchor: 'GG Hostel',
+          href: 'https://www.gghostel.com/',
+          label: 'Página de inicio de GG Hostel, un producto cuyas bases ayudó a construir Dahiana',
+        },
+        {
+          anchor: 'Casa Lolita',
+          href: 'https://www.casalolita.es/',
+          label: 'Página de inicio de Casa Lolita, un producto cuyas bases ayudó a construir Dahiana',
+        },
+      ],
       imageAlt: 'Sitio web del portfolio de Divino Hotels, incluyendo GG Hostel y Casa Lolita, construido por Dahiana',
     },
     {

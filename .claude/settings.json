@@ -1,7 +1,4 @@
 {
-  "worktree": {
-    "baseRef": "head"
-  },
   "permissions": {
     "allow": [
       "Bash(curl -s \"https://api.github.com/repos/microsoft/fluentui-emoji/contents/assets/Waving%20hand/3D\")",
@@ -41,7 +38,18 @@
       "Bash(git -C /Users/dahiana/Documents/Claude_Code/dahiana_work branch --show-current)",
       "Bash(git -C /Users/dahiana/Documents/Claude_Code/dahiana_work diff .claude/settings.json .gitignore)",
       "Bash(git -C /Users/dahiana/Documents/Claude_Code/dahiana_work fetch origin)",
-      "Bash(git -C /Users/dahiana/Documents/Claude_Code/dahiana_work log origin/main..content-updates --oneline)"
+      "Bash(git -C /Users/dahiana/Documents/Claude_Code/dahiana_work log origin/main..content-updates --oneline)",
+      "Bash(echo \"exit: $?\")",
+      "Bash(grep -rInoE '[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\\\.[A-Za-z]{2,}' dist/)",
+      "Bash(gh pr *)",
+      "Skill(impeccable)",
+      "Skill(impeccable:*)",
+      "Bash(node .claude/skills/impeccable/scripts/context.mjs)",
+      "Bash(node /Users/dahiana/.claude/skills/impeccable/scripts/context.mjs)",
+      "Bash(pkill -f \"astro preview --port 4322\")"
     ]
+  },
+  "worktree": {
+    "baseRef": "head"
   }
 }
