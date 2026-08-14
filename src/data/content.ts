@@ -31,9 +31,17 @@ export interface NavLabels {
   contact: string;
 }
 
+export interface CookieRow {
+  name: string;
+  provider: string;
+  duration: string;
+  description: string;
+}
+
 export interface CookieCategoryCopy {
   title: string;
   description: string;
+  cookies: CookieRow[];
 }
 
 export interface CookieConsentCopy {
@@ -45,9 +53,33 @@ export interface CookieConsentCopy {
   closeIconLabel: string;
   preferencesTitle: string;
   savePreferencesBtn: string;
+  policyLinkText: string;
+  cookieTableHeaders: {
+    name: string;
+    provider: string;
+    duration: string;
+    description: string;
+  };
   necessary: CookieCategoryCopy;
   analytics: CookieCategoryCopy;
   marketing: CookieCategoryCopy;
+}
+
+export interface CookiePolicyCopy {
+  heading: string;
+  intro: string;
+  whatAreCookiesHeading: string;
+  whatAreCookiesBody: string;
+  typesHeading: string;
+  typesBody: string;
+  disableHeading: string;
+  disableBody: string;
+  browserLinks: { label: string; href: string }[];
+  tableHeading: string;
+  manageHeading: string;
+  manageBody: string;
+  manageButton: string;
+  contactBody: string;
 }
 
 export interface PageContent {
@@ -68,6 +100,7 @@ export interface PageContent {
   statusLine: string;
   langSwitchLabel: string;
   cookieConsent: CookieConsentCopy;
+  cookiePolicy: CookiePolicyCopy;
 }
 
 export const en: PageContent = {
@@ -212,7 +245,7 @@ export const en: PageContent = {
   statusLine: 'Available for new projects.',
   langSwitchLabel: 'ES',
   cookieConsent: {
-    title: 'Cookies, kept simple',
+    title: 'Cookie preferences',
     description:
       "I use a few cookies to understand how people use this site. Nothing gets tracked until you say yes, and you can change your mind anytime.",
     acceptAllBtn: 'Accept all',
@@ -221,19 +254,74 @@ export const en: PageContent = {
     closeIconLabel: 'Close',
     preferencesTitle: 'Cookie preferences',
     savePreferencesBtn: 'Save preferences',
+    policyLinkText: 'Cookie policy',
+    cookieTableHeaders: {
+      name: 'Cookie',
+      provider: 'Provider',
+      duration: 'Duration',
+      description: 'Purpose',
+    },
     necessary: {
       title: 'Necessary',
       description: 'Required to remember your cookie choice. Always on.',
+      cookies: [
+        {
+          name: 'cc_cookie',
+          provider: 'dahiana.work (own)',
+          duration: '6 months',
+          description: 'Stores your cookie preferences so this banner doesn’t show again on every visit.',
+        },
+      ],
     },
     analytics: {
       title: 'Analytics',
       description: 'Helps me understand which pages and links people actually use, via Google Analytics.',
+      cookies: [
+        {
+          name: '_ga',
+          provider: 'Google Analytics',
+          duration: '2 years',
+          description: 'Distinguishes unique visitors to measure site usage.',
+        },
+        {
+          name: '_ga_XS2FF5S29E',
+          provider: 'Google Analytics',
+          duration: '2 years',
+          description: 'Persists session state for this site’s Google Analytics 4 property.',
+        },
+      ],
     },
     marketing: {
       title: 'Marketing',
       description:
-        'Not currently used on this site — reserved for future advertising or retargeting tools, if any are ever added.',
+        'Not currently used on this site, reserved for future advertising or retargeting tools, if any are ever added.',
+      cookies: [],
     },
+  },
+  cookiePolicy: {
+    heading: 'Cookie policy',
+    intro:
+      'This page explains what cookies dahiana.work uses, why, and how you can change your mind at any time.',
+    whatAreCookiesHeading: 'What are cookies?',
+    whatAreCookiesBody:
+      'Cookies are small files a website can store in your browser. They let a site remember information about your visit — like a preference you set — so it doesn’t have to ask again.',
+    typesHeading: 'What this site actually uses',
+    typesBody:
+      'This site keeps things minimal: one first-party cookie to remember your consent choice, and, only if you opt in, two Google Analytics cookies to understand which pages and links get used. There is no advertising or retargeting on this site today — the "Marketing" category exists in the consent settings only in case that ever changes, and nothing is stored under it right now.',
+    disableHeading: 'Blocking or deleting cookies',
+    disableBody:
+      'You can allow, block, or delete cookies at any time through your browser settings, or by revisiting your preferences on this site below. Blocking the necessary cookie means this banner will show again on every visit.',
+    browserLinks: [
+      { label: 'Chrome', href: 'https://support.google.com/accounts/answer/61416' },
+      { label: 'Firefox', href: 'https://support.mozilla.org/en-US/kb/enhanced-tracking-protection-firefox-desktop' },
+      { label: 'Safari', href: 'https://support.apple.com/guide/safari/manage-cookies-sfri11471/mac' },
+      { label: 'Microsoft Edge', href: 'https://support.microsoft.com/en-us/microsoft-edge/delete-cookies-in-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09' },
+    ],
+    tableHeading: 'Cookies used on this site',
+    manageHeading: 'Change your choice',
+    manageBody: 'You can update or withdraw your consent at any time.',
+    manageButton: 'Manage cookie preferences',
+    contactBody: 'Questions about this policy? Email hello@dahiana.work.',
   },
 };
 
@@ -379,27 +467,82 @@ export const es: PageContent = {
   statusLine: 'Disponible para nuevos proyectos.',
   langSwitchLabel: 'EN',
   cookieConsent: {
-    title: 'Cookies, sin complicaciones',
+    title: 'Preferencias de Cookies',
     description:
-      'Uso algunas cookies para entender cómo se usa este sitio. No se activa ningún seguimiento hasta que lo apruebes, y puedes cambiar de opinión cuando quieras.',
+      'Este sitio usa cookies para entender cómo lo utilizas. No se activará ningún seguimiento hasta que las aceptes, y puedes cambiar de opinión cuando quieras.',
     acceptAllBtn: 'Aceptar todo',
-    acceptNecessaryBtn: 'Rechazar',
+    acceptNecessaryBtn: 'Rechazar todo',
     showPreferencesBtn: 'Gestionar preferencias',
     closeIconLabel: 'Cerrar',
     preferencesTitle: 'Preferencias de cookies',
     savePreferencesBtn: 'Guardar preferencias',
+    policyLinkText: 'Política de cookies',
+    cookieTableHeaders: {
+      name: 'Cookie',
+      provider: 'Proveedor',
+      duration: 'Duración',
+      description: 'Finalidad',
+    },
     necessary: {
       title: 'Necesarias',
-      description: 'Necesarias para recordar tu elección sobre las cookies. Siempre activas.',
+      description: 'Son necesarias para recordar tu elección sobre las cookies. Siempre activas.',
+      cookies: [
+        {
+          name: 'cc_cookie',
+          provider: 'dahiana.work (propia)',
+          duration: '6 meses',
+          description: 'Guarda tu elección sobre las cookies para que este aviso no vuelva a aparecer en cada visita.',
+        },
+      ],
     },
     analytics: {
       title: 'Analítica',
-      description: 'Me ayuda a entender qué páginas y enlaces se usan realmente, a través de Google Analytics.',
+      description: 'Me ayuda a entender qué páginas visitas y qué enlaces usas, a través de Google Analytics.',
+      cookies: [
+        {
+          name: '_ga',
+          provider: 'Google Analytics',
+          duration: '2 años',
+          description: 'Distingue a los usuarios únicos para medir el uso del sitio.',
+        },
+        {
+          name: '_ga_XS2FF5S29E',
+          provider: 'Google Analytics',
+          duration: '2 años',
+          description: 'Mantiene el estado de sesión para la propiedad de Google Analytics 4 de este sitio.',
+        },
+      ],
     },
     marketing: {
       title: 'Marketing',
       description:
-        'No se usa actualmente en este sitio — reservado por si en el futuro se añaden herramientas de publicidad o retargeting.',
+        'De momento no se usan. Está reservado por si en el futuro se añaden herramientas de publicidad o retargeting.',
+      cookies: [],
     },
+  },
+  cookiePolicy: {
+    heading: 'Política de cookies',
+    intro:
+      'Esta página explica qué cookies usa dahiana.work, para qué, y cómo puedes cambiar de opinión en cualquier momento.',
+    whatAreCookiesHeading: '¿Qué son las cookies?',
+    whatAreCookiesBody:
+      'Las cookies son pequeños archivos que un sitio web puede guardar en tu navegador. Permiten que el sitio recuerde información sobre tu visita, como una preferencia que elegiste, para no tener que volver a preguntarla.',
+    typesHeading: 'Qué usa realmente este sitio',
+    typesBody:
+      'Este sitio mantiene las cosas mínimas: una cookie propia para recordar tu elección de consentimiento y, solo si lo aceptas, dos cookies de Google Analytics para entender qué páginas y enlaces se usan. Hoy no hay publicidad ni retargeting en este sitio; la categoría "Marketing" existe en las preferencias solo por si eso cambia en el futuro, y de momento no se guarda nada en ella.',
+    disableHeading: 'Bloquear o eliminar cookies',
+    disableBody:
+      'Puedes permitir, bloquear o eliminar las cookies en cualquier momento desde la configuración de tu navegador, o volviendo a tus preferencias en este sitio más abajo. Bloquear la cookie necesaria hará que este aviso vuelva a aparecer en cada visita.',
+    browserLinks: [
+      { label: 'Chrome', href: 'https://support.google.com/accounts/answer/61416?hl=es' },
+      { label: 'Firefox', href: 'https://support.mozilla.org/es/kb/proteccion-mejorada-contra-el-rastreo-firefox-de' },
+      { label: 'Safari', href: 'https://support.apple.com/es-es/guide/safari/sfri11471/mac' },
+      { label: 'Microsoft Edge', href: 'https://support.microsoft.com/es-es/microsoft-edge/eliminar-las-cookies-en-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09' },
+    ],
+    tableHeading: 'Cookies usadas en este sitio',
+    manageHeading: 'Cambia tu elección',
+    manageBody: 'Puedes actualizar o retirar tu consentimiento en cualquier momento.',
+    manageButton: 'Gestionar preferencias de cookies',
+    contactBody: '¿Dudas sobre esta política? Escribe a hello@dahiana.work.',
   },
 };

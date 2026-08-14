@@ -1,6 +1,6 @@
 ---
 import 'vanilla-cookieconsent/dist/cookieconsent.css';
-import type { CookieConsentCopy } from '../data/content';
+import type { CookieCategoryCopy, CookieConsentCopy } from '../data/content';
 
 interface Props {
   lang: 'en' | 'es';
@@ -8,6 +8,37 @@ interface Props {
 }
 
 const { lang, content } = Astro.props;
+
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+const policyHref = lang === 'es' ? '/es/cookies/' : '/cookies/';
+const policyLink = `<a href="${policyHref}" target="_blank" rel="noopener noreferrer">${escapeHtml(content.policyLinkText)}</a>`;
+
+function toSection(category: CookieCategoryCopy, linkedCategory: string) {
+  const headers = content.cookieTableHeaders;
+  return {
+    title: category.title,
+    description: category.description,
+    linkedCategory,
+    ...(category.cookies.length > 0 && {
+      cookieTable: {
+        headers: { name: headers.name, provider: headers.provider, duration: headers.duration, description: headers.description },
+        body: category.cookies.map((cookie) => ({
+          name: cookie.name,
+          provider: cookie.provider,
+          duration: cookie.duration,
+          description: cookie.description,
+        })),
+      },
+    }),
+  };
+}
 
 const translations = {
   consentModal: {
@@ -17,6 +48,7 @@ const translations = {
     acceptNecessaryBtn: content.acceptNecessaryBtn,
     showPreferencesBtn: content.showPreferencesBtn,
     closeIconLabel: content.closeIconLabel,
+    footer: policyLink,
   },
   preferencesModal: {
     title: content.preferencesTitle,
@@ -25,9 +57,9 @@ const translations = {
     savePreferencesBtn: content.savePreferencesBtn,
     closeIconLabel: content.closeIconLabel,
     sections: [
-      { title: content.necessary.title, description: content.necessary.description, linkedCategory: 'necessary' },
-      { title: content.analytics.title, description: content.analytics.description, linkedCategory: 'analytics' },
-      { title: content.marketing.title, description: content.marketing.description, linkedCategory: 'marketing' },
+      toSection(content.necessary, 'necessary'),
+      toSection(content.analytics, 'analytics'),
+      toSection(content.marketing, 'marketing'),
     ],
   },
 };
