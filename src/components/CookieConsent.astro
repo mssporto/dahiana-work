@@ -114,7 +114,6 @@ const translations = {
     --cc-bg: var(--color-surface-base);
     --cc-modal-border-radius: 2px;
     --cc-modal-margin: var(--space-3);
-    --cc-link-color: var(--color-text-accent);
 
     --cc-btn-border-radius: 2px;
     --cc-btn-primary-bg: var(--color-text-accent);
@@ -156,5 +155,32 @@ const translations = {
     --cc-overlay-bg: rgba(10, 10, 8, 0.6);
     --cc-webkit-scrollbar-bg: var(--grid-line-color);
     --cc-webkit-scrollbar-hover-bg: var(--color-text-muted);
+  }
+
+  /* Links inside the banner/panel are JS-injected by the library, so they need
+     the site's .inline-link treatment applied explicitly rather than inherited. */
+  :global(#cc-main a) {
+    color: var(--color-text-primary);
+    text-decoration: underline;
+    text-decoration-color: currentColor;
+    text-underline-offset: 0.2em;
+    transition: color 0.15s ease;
+  }
+
+  :global(#cc-main a:hover),
+  :global(#cc-main a:focus-visible) {
+    color: var(--color-text-accent);
+  }
+
+  :global(#cc-main a:focus-visible) {
+    outline: 2px solid var(--color-text-accent);
+    outline-offset: 2px;
+    border-radius: 1px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :global(#cc-main a) {
+      transition: none;
+    }
   }
 </style>

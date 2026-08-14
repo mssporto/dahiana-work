@@ -304,10 +304,10 @@ export const en: PageContent = {
       'This page explains what cookies dahiana.work uses, why, and how you can change your mind at any time.',
     whatAreCookiesHeading: 'What are cookies?',
     whatAreCookiesBody:
-      'Cookies are small files a website can store in your browser. They let a site remember information about your visit — like a preference you set — so it doesn’t have to ask again.',
+      'Cookies are small files a website can store in your browser. They let a site remember information about your visit (like a preference you set) so it doesn’t have to ask again.',
     typesHeading: 'What this site actually uses',
     typesBody:
-      'This site keeps things minimal: one first-party cookie to remember your consent choice, and, only if you opt in, two Google Analytics cookies to understand which pages and links get used. There is no advertising or retargeting on this site today — the "Marketing" category exists in the consent settings only in case that ever changes, and nothing is stored under it right now.',
+      'This site keeps things minimal: one first-party cookie to remember your consent choice, and, only if you opt in, two Google Analytics cookies to understand which pages and links get used. There is no advertising or retargeting on this site today (the "Marketing" category exists in the consent settings only in case that ever changes), and nothing is stored under it right now.',
     disableHeading: 'Blocking or deleting cookies',
     disableBody:
       'You can allow, block, or delete cookies at any time through your browser settings, or by revisiting your preferences on this site below. Blocking the necessary cookie means this banner will show again on every visit.',
