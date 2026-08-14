@@ -11,6 +11,7 @@ interface Props {
 }
 
 const { title, description, lang, projects } = Astro.props;
+const gtmId = 'GTM-KP4QVKT9';
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const altLang = lang === 'en' ? 'es' : 'en';
 const altPath = getRelativeLocaleUrl(altLang, '', { normalizeLocale: false });
@@ -97,6 +98,18 @@ const jsonLd = {
 <!doctype html>
 <html lang={lang}>
   <head>
+    <script define:vars={{ gtmId }}>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        const f = d.getElementsByTagName(s)[0];
+        const j = d.createElement(s);
+        const dl = l !== 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', gtmId);
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -127,6 +140,14 @@ const jsonLd = {
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline />
   </head>
   <body>
+    <noscript>
+      <iframe
+        class="gtm-noscript-frame"
+        src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
+        height="0"
+        width="0"
+        title="Google Tag Manager"></iframe>
+    </noscript>
     <a class="skip-link" href="#main">Skip to main content</a>
     <slot name="nav" />
     <main id="main">
@@ -185,6 +206,11 @@ const jsonLd = {
 
   :global(body) {
     margin: 0;
+  }
+
+  .gtm-noscript-frame {
+    display: none;
+    visibility: hidden;
   }
 
   .skip-link {
