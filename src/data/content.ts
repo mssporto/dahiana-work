@@ -66,6 +66,7 @@ export interface CookieConsentCopy {
 }
 
 export interface CookiePolicyCopy {
+  backHomeLabel: string;
   heading: string;
   intro: string;
   whatAreCookiesHeading: string;
@@ -299,6 +300,7 @@ export const en: PageContent = {
     },
   },
   cookiePolicy: {
+    backHomeLabel: '← Back to home',
     heading: 'Cookie policy',
     intro:
       'This page explains what cookies dahiana.work uses, why, and how you can change your mind at any time.',
@@ -521,6 +523,7 @@ export const es: PageContent = {
     },
   },
   cookiePolicy: {
+    backHomeLabel: '← Volver al inicio',
     heading: 'Política de cookies',
     intro:
       'Esta página explica qué cookies usa dahiana.work, para qué, y cómo puedes cambiar de opinión en cualquier momento.',
