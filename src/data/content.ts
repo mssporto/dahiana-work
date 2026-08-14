@@ -31,6 +31,25 @@ export interface NavLabels {
   contact: string;
 }
 
+export interface CookieCategoryCopy {
+  title: string;
+  description: string;
+}
+
+export interface CookieConsentCopy {
+  title: string;
+  description: string;
+  acceptAllBtn: string;
+  acceptNecessaryBtn: string;
+  showPreferencesBtn: string;
+  closeIconLabel: string;
+  preferencesTitle: string;
+  savePreferencesBtn: string;
+  necessary: CookieCategoryCopy;
+  analytics: CookieCategoryCopy;
+  marketing: CookieCategoryCopy;
+}
+
 export interface PageContent {
   lang: 'en' | 'es';
   title: string;
@@ -48,6 +67,7 @@ export interface PageContent {
   copiedLabel: string;
   statusLine: string;
   langSwitchLabel: string;
+  cookieConsent: CookieConsentCopy;
 }
 
 export const en: PageContent = {
@@ -191,6 +211,30 @@ export const en: PageContent = {
   copiedLabel: 'Copied!',
   statusLine: 'Available for new projects.',
   langSwitchLabel: 'ES',
+  cookieConsent: {
+    title: 'Cookies, kept simple',
+    description:
+      "I use a few cookies to understand how people use this site. Nothing gets tracked until you say yes, and you can change your mind anytime.",
+    acceptAllBtn: 'Accept all',
+    acceptNecessaryBtn: 'Reject',
+    showPreferencesBtn: 'Manage preferences',
+    closeIconLabel: 'Close',
+    preferencesTitle: 'Cookie preferences',
+    savePreferencesBtn: 'Save preferences',
+    necessary: {
+      title: 'Necessary',
+      description: 'Required to remember your cookie choice. Always on.',
+    },
+    analytics: {
+      title: 'Analytics',
+      description: 'Helps me understand which pages and links people actually use, via Google Analytics.',
+    },
+    marketing: {
+      title: 'Marketing',
+      description:
+        'Not currently used on this site — reserved for future advertising or retargeting tools, if any are ever added.',
+    },
+  },
 };
 
 export const es: PageContent = {
@@ -334,4 +378,28 @@ export const es: PageContent = {
   copiedLabel: '¡Copiado!',
   statusLine: 'Disponible para nuevos proyectos.',
   langSwitchLabel: 'EN',
+  cookieConsent: {
+    title: 'Cookies, sin complicaciones',
+    description:
+      'Uso algunas cookies para entender cómo se usa este sitio. No se activa ningún seguimiento hasta que lo apruebes, y puedes cambiar de opinión cuando quieras.',
+    acceptAllBtn: 'Aceptar todo',
+    acceptNecessaryBtn: 'Rechazar',
+    showPreferencesBtn: 'Gestionar preferencias',
+    closeIconLabel: 'Cerrar',
+    preferencesTitle: 'Preferencias de cookies',
+    savePreferencesBtn: 'Guardar preferencias',
+    necessary: {
+      title: 'Necesarias',
+      description: 'Necesarias para recordar tu elección sobre las cookies. Siempre activas.',
+    },
+    analytics: {
+      title: 'Analítica',
+      description: 'Me ayuda a entender qué páginas y enlaces se usan realmente, a través de Google Analytics.',
+    },
+    marketing: {
+      title: 'Marketing',
+      description:
+        'No se usa actualmente en este sitio — reservado por si en el futuro se añaden herramientas de publicidad o retargeting.',
+    },
+  },
 };

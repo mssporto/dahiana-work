@@ -1,8 +1,14 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { en } from '../data/content';
 ---
 
-<BaseLayout title="404 — Dahiana Porto" description="Page not found." lang="en">
+<BaseLayout
+  title="404 — Dahiana Porto"
+  description="Page not found."
+  lang="en"
+  cookieConsent={en.cookieConsent}
+>
   <section class="not-found">
     <h1>404</h1>
     <p>That page doesn&rsquo;t exist. <a href="/">Back home</a>.</p>
