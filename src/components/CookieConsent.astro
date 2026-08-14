@@ -61,6 +61,7 @@ const translations = {
   declare global {
     interface Window {
       dataLayer: unknown[][];
+      gtag: (...args: unknown[]) => void;
     }
   }
 
@@ -72,16 +73,12 @@ const translations = {
     function pushConsentUpdate(cookie: { categories: string[] }) {
       const granted = (category: string) => (cookie.categories.includes(category) ? 'granted' : 'denied');
       window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push([
-        'consent',
-        'update',
-        {
-          analytics_storage: granted('analytics'),
-          ad_storage: granted('marketing'),
-          ad_user_data: granted('marketing'),
-          ad_personalization: granted('marketing'),
-        },
-      ]);
+      window.gtag('consent', 'update', {
+        analytics_storage: granted('analytics'),
+        ad_storage: granted('marketing'),
+        ad_user_data: granted('marketing'),
+        ad_personalization: granted('marketing'),
+      });
     }
 
     run({

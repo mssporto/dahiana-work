@@ -103,17 +103,17 @@ const jsonLd = {
   <head>
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push([
-        'consent',
-        'default',
-        {
-          analytics_storage: 'denied',
-          ad_storage: 'denied',
-          ad_user_data: 'denied',
-          ad_personalization: 'denied',
-          wait_for_update: 500,
-        },
-      ]);
+      function gtag() {
+        window.dataLayer.push(arguments);
+      }
+      window.gtag = gtag;
+      gtag('consent', 'default', {
+        analytics_storage: 'denied',
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        wait_for_update: 500,
+      });
     </script>
     <script define:vars={{ gtmId }}>
       (function (w, d, s, l, i) {
