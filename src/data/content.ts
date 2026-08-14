@@ -535,7 +535,7 @@ export const es: PageContent = {
       'Puedes permitir, bloquear o eliminar las cookies en cualquier momento desde la configuración de tu navegador, o volviendo a tus preferencias en este sitio más abajo. Bloquear la cookie necesaria hará que este aviso vuelva a aparecer en cada visita.',
     browserLinks: [
       { label: 'Chrome', href: 'https://support.google.com/accounts/answer/61416?hl=es' },
-      { label: 'Firefox', href: 'https://support.mozilla.org/es/kb/proteccion-mejorada-contra-el-rastreo-firefox-de' },
+      { label: 'Firefox', href: 'https://support.mozilla.org/en-US/kb/clear-cookies-and-site-data-firefox' },
       { label: 'Safari', href: 'https://support.apple.com/es-es/guide/safari/sfri11471/mac' },
       { label: 'Microsoft Edge', href: 'https://support.microsoft.com/es-es/microsoft-edge/eliminar-las-cookies-en-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09' },
     ],
