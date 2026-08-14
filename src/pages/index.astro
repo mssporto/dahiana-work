@@ -9,7 +9,13 @@ import Footer from '../components/Footer.astro';
 import { en } from '../data/content';
 ---
 
-<BaseLayout title={en.title} description={en.description} lang="en" projects={en.projects}>
+<BaseLayout
+  title={en.title}
+  description={en.description}
+  lang="en"
+  projects={en.projects}
+  cookieConsent={en.cookieConsent}
+>
   <Nav slot="nav" nav={en.nav} statusLine={en.statusLine} langHref="/es/" langLabel={en.langSwitchLabel} />
   <Hero greeting={en.greeting} />
   <About about={en.about} />

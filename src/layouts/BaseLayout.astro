@@ -1,20 +1,23 @@
 ---
 import '../styles/tokens.css';
 import { getRelativeLocaleUrl } from 'astro:i18n';
-import type { Project } from '../data/content';
+import CookieConsent from '../components/CookieConsent.astro';
+import type { CookieConsentCopy, Project } from '../data/content';
 
 interface Props {
   title: string;
   description: string;
   lang: 'en' | 'es';
   projects?: Project[];
+  cookieConsent: CookieConsentCopy;
 }
 
-const { title, description, lang, projects } = Astro.props;
+const { title, description, lang, projects, cookieConsent } = Astro.props;
 const gtmId = 'GTM-KP4QVKT9';
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const altLang = lang === 'en' ? 'es' : 'en';
-const altPath = getRelativeLocaleUrl(altLang, '', { normalizeLocale: false });
+const localeRelativePath = lang === 'es' ? Astro.url.pathname.replace(/^\/es/, '') || '/' : Astro.url.pathname;
+const altPath = getRelativeLocaleUrl(altLang, localeRelativePath, { normalizeLocale: false });
 const ogImageURL = new URL('/images/og-card.png', Astro.site);
 const ogLocale = lang === 'en' ? 'en_US' : 'es_ES';
 const ogLocaleAlternate = lang === 'en' ? 'es_ES' : 'en_US';
@@ -98,6 +101,20 @@ const jsonLd = {
 <!doctype html>
 <html lang={lang}>
   <head>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push([
+        'consent',
+        'default',
+        {
+          analytics_storage: 'denied',
+          ad_storage: 'denied',
+          ad_user_data: 'denied',
+          ad_personalization: 'denied',
+          wait_for_update: 500,
+        },
+      ]);
+    </script>
     <script define:vars={{ gtmId }}>
       (function (w, d, s, l, i) {
         w[l] = w[l] || [];
@@ -154,6 +171,7 @@ const jsonLd = {
       <slot />
     </main>
     <slot name="footer" />
+    <CookieConsent lang={lang} content={cookieConsent} />
   </body>
 </html>
 
