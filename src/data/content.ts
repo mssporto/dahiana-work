@@ -53,7 +53,6 @@ export interface CookieConsentCopy {
   closeIconLabel: string;
   preferencesTitle: string;
   savePreferencesBtn: string;
-  policyLinkText: string;
   cookieTableHeaders: {
     name: string;
     provider: string;
@@ -248,14 +247,13 @@ export const en: PageContent = {
   cookieConsent: {
     title: 'Cookie preferences',
     description:
-      "I use a few cookies to understand how people use this site. Nothing gets tracked until you say yes, and you can change your mind anytime.",
+      'I use a few cookies to understand how people use this site. Nothing gets tracked until you say yes, and you can change your mind anytime. Check out the <a href="/cookies/" target="_blank" rel="noopener noreferrer">cookie policy</a>.',
     acceptAllBtn: 'Accept all',
     acceptNecessaryBtn: 'Reject',
     showPreferencesBtn: 'Manage preferences',
     closeIconLabel: 'Close',
     preferencesTitle: 'Cookie preferences',
     savePreferencesBtn: 'Save preferences',
-    policyLinkText: 'Cookie policy',
     cookieTableHeaders: {
       name: 'Cookie',
       provider: 'Provider',
@@ -300,7 +298,7 @@ export const en: PageContent = {
     },
   },
   cookiePolicy: {
-    backHomeLabel: '← Back to home',
+    backHomeLabel: 'Back to home',
     heading: 'Cookie policy',
     intro:
       'This page explains what cookies dahiana.work uses, why, and how you can change your mind at any time.',
@@ -471,14 +469,13 @@ export const es: PageContent = {
   cookieConsent: {
     title: 'Preferencias de Cookies',
     description:
-      'Este sitio usa cookies para entender cómo lo utilizas. No se activará ningún seguimiento hasta que las aceptes, y puedes cambiar de opinión cuando quieras.',
+      'Este sitio usa cookies para entender cómo lo utilizas. No se activará ningún seguimiento hasta que las aceptes, y puedes cambiar de opinión cuando quieras. Lee la <a href="/es/cookies/" target="_blank" rel="noopener noreferrer">Política de Cookies</a>.',
     acceptAllBtn: 'Aceptar todo',
     acceptNecessaryBtn: 'Rechazar todo',
     showPreferencesBtn: 'Gestionar preferencias',
     closeIconLabel: 'Cerrar',
     preferencesTitle: 'Preferencias de cookies',
     savePreferencesBtn: 'Guardar preferencias',
-    policyLinkText: 'Política de cookies',
     cookieTableHeaders: {
       name: 'Cookie',
       provider: 'Proveedor',
@@ -523,7 +520,7 @@ export const es: PageContent = {
     },
   },
   cookiePolicy: {
-    backHomeLabel: '← Volver al inicio',
+    backHomeLabel: 'Volver al inicio',
     heading: 'Política de cookies',
     intro:
       'Esta página explica qué cookies usa dahiana.work, para qué, y cómo puedes cambiar de opinión en cualquier momento.',
