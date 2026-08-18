@@ -39,9 +39,13 @@ public/
 - v2 redesign: cream body / dark footer band, single self-hosted Archivo font, sharp/mono nav with a live Madrid time + coordinates readout, text-row Work list (no cards), footer sticker CTA.
 - English + Spanish pages build and pass `astro check` with 0 errors.
 - Spanish copy is a first-pass translation — pending Dahiana's review before publish.
-- Not yet its own git repo (deferred until there's a commit-worthy milestone); will be **private** on GitHub per standing rule.
+- GitHub repo is public for portfolio purposes — source viewable, not licensed for reuse (see License below).
 
 ## Third-party assets
 
 - `public/images/waving-hand-3d.png` — Waving Hand, 3D style, from [microsoft/fluentui-emoji](https://github.com/microsoft/fluentui-emoji), MIT License, Copyright (c) Microsoft Corporation.
 - `public/images/envelope-3d.png` — Envelope, 3D style, from [microsoft/fluentui-emoji](https://github.com/microsoft/fluentui-emoji), MIT License, Copyright (c) Microsoft Corporation.
+
+## License
+
+Public for portfolio/reference viewing only — not licensed for reuse, forking, or redistribution. See [`LICENSE`](./LICENSE).

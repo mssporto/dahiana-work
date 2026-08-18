@@ -5,7 +5,7 @@ Personal portfolio site for Dahiana Porto. Static, single-page-per-language, bui
 ## Project facts
 - Domain: `dahiana.work` (already owned).
 - Deploy target: Cloudflare Pages. Agent prepares, human executes (see Deployment below).
-- GitHub repo: **always private.** Standing rule, not just for this project.
+- GitHub repo: **public**, for portfolio purposes. Source is viewable but not licensed for reuse — see `LICENSE`. (Exception to the general "repos default private" rule, approved 2026-08-18.)
 - No blog/CMS in scope. No markdown-rendering pipeline — content is hardcoded per language in `.astro`/data files. If a blog is added later, revisit `astro-website.md` §4–5 (markdown sanitizer) before adding one.
 
 ## Trust model
