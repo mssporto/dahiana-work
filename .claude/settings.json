@@ -46,7 +46,20 @@
       "Skill(impeccable:*)",
       "Bash(node .claude/skills/impeccable/scripts/context.mjs)",
       "Bash(node /Users/dahiana/.claude/skills/impeccable/scripts/context.mjs)",
-      "Bash(pkill -f \"astro preview --port 4322\")"
+      "Bash(pkill -f \"astro preview --port 4322\")",
+      "Bash(xargs grep -o \"\\\\.browser-links[a-z: ,>]*{[^}]*}\")",
+      "Bash(grep -o '\\\\.browser-links[a-z: ,>._-]*{[^}]*}' dist/_astro/CookiePolicy.ZsZC_FXz.css)",
+      "Bash(curl -s http://localhost:4321/cookies/)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:4321/cookies/)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:4321/es/cookies/)",
+      "Bash(/usr/bin/curl -s http://localhost:4321/)",
+      "Bash(/usr/bin/curl -s http://localhost:4321/es/)",
+      "Bash(/usr/bin/curl -s http://localhost:4321/cookies/)",
+      "Bash(/usr/bin/curl -s http://localhost:4321/es/cookies/)",
+      "Bash(/usr/bin/curl -s http://localhost:4321/nonexistent-xyz/)",
+      "mcp__plugin_claude-mem_mcp-search__get_observations",
+      "Bash(grep -rnoE '#[0-9a-fA-F]{3,8}\\\\b' src --include='*.astro' --include='*.ts' --include='*.css')",
+      "Bash(git config *)"
     ]
   },
   "worktree": {
