@@ -125,6 +125,11 @@ export const en: PageContent = {
           href: 'https://www.linkedin.com/in/low-code-ai-automation-dahiana-porto/',
           label: "Dahiana Porto's LinkedIn profile",
         },
+        {
+          anchor: 'build them',
+          href: 'https://github.com/mssporto',
+          label: "Dahiana Porto's GitHub profile",
+        },
       ],
     },
     {
